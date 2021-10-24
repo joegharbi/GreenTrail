@@ -2,18 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
     <title>Traffic API Test</title>
 </head>
 <body>
     <h1>Plan your trip</h1>
-    <label for='from'>From: <input id='from'></input></label>
+    <label for='from'>From: <input id='from' size="70" onkeydown="onInputEnter('from')"></input></label>
     <button onclick="useGPS()">GPS</button><br><br>
-    <label for='to'>To: <input id='to'></input></label>
-    <button>GO!</button>
+    <label for='to'>To: <input id='to' size="70" onkeydown="onInputEnter('to')"></input></label>
+    <button onClick="planRoutes()">GO!</button><br><br>
     
+    <div id='map' style="width: 800px; height: 600px"></div>
+    <p id='trafficState'></p>
+    <ul id='summary'></ul>
+
     <p>Powered by HERE APIs</p>
     <script type='text/JavaScript' src='../apiConnection.js' ></script>
+    <script type='text/JavaScript' src='map.js' ></script>
     <script type='text/JavaScript' src='index.js' ></script>
 </body>
 </html>
