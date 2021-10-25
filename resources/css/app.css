@@ -1,0 +1,7 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+/* -------------------24-10-2021 */
+body{
+    background-color: aliceblue;
+}

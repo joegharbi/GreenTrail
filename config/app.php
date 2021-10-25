@@ -51,8 +51,9 @@ return [
     | your application so that it is used when running Artisan tasks.
     |
     */
-
-    'url' => env('APP_URL', 'http://localhost'),
+    // 24-10-2021
+    // 'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://greentrail.com/'),
 
     'asset_url' => env('ASSET_URL', null),
 
@@ -174,6 +175,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\FortifyServiceProvider::class,
+        App\Providers\JetstreamServiceProvider::class,
 
     ],
 

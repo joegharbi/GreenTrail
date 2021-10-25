@@ -13,6 +13,40 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+// ---------------------------------------------------------
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.welcome');
+})->name("home");
+
+Route::get('/about-us', function () {
+    return view('pages.about',[
+    'page_name' => 'About us page',
+    'page_descrption' => 'Descrbtion will be her '
+    ]);
+    // return 'green trail';
+})->name("about-us");
+
+//(URI , view , Array of data )
+Route::view('contact', 'pages/contact',[
+    'page_name' => 'contact us page',
+    'page_descrption' => 'Descrbtion will be her '
+])->name("contact");
+
+Route::get('category/{id}', function ($id) {
+    $cats = [
+        '1' => 'Weather',
+        '2' => 'Trafic'
+           ];
+
+    return view("pages.category",[
+        'the_id' =>  $cats[$id] ?? "This id not found" 
+                           ]);
 });
