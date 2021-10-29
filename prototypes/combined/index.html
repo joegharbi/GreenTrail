@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+
+        tr {
+            margin: none;
+            padding: none;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border: 1px solid black;
+            text-align: center;
+        }
+    </style>
+    <title>GreenTrail Prototype</title>
+</head>
+<body>
+    <h1>Plan your trip</h1>
+    <label for='from'>From: <input id='from' size="70" onkeydown="onInputEnter('from')"></input></label>
+    <button onclick="useGPS()">GPS</button><br><br>
+    <label for='to'>To: <input id='to' size="70" onkeydown="onInputEnter('to')"></input></label>
+    <button onClick="doSuggestion()">GO!</button><br><br>
+    <label for="trafficMap"><input type="checkbox" id="trafficMap" onclick="onTrafficMap()">Show live traffic on map</label>
+    
+    <div id='map' style="width: 800px; height: 600px"></div>
+    <div id='weatherImg'></div>
+    <p id='weatherDesc'></p>
+    <p id='trafficState'></p>
+    <div id='suggestionTable'></div>
+
+    <p>Powered by HERE APIs</p>
+    <script type='text/JavaScript' src='../apiConnection.js' ></script>
+    <script type='text/JavaScript' src='suggest.js' ></script>
+    <script type='text/JavaScript' src='map.js' ></script>
+    <script type='text/JavaScript' src='index.js' ></script>
+</body>
+</html>
