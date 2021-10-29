@@ -18,7 +18,8 @@ In the traffic API test app (`traffic` folder) we test the capabilities of multi
 1. Set source (from) or use GPS
 2. Set destination (to)
 3. Hit GO!
-Please note, that most of the desktop devices does not have a GPS sensor. In this case the measures can be inaccurate
+
+*Please note, that most of the desktop devices does not have a GPS sensor. In this case the measures can be inaccurate*
 
 ### Results:
 
@@ -36,7 +37,8 @@ In this app (`combined` folder) we combine the traffic API test, and the weather
 1. Set source (from) or use GPS
 2. Set destination (to)
 3. Hit GO!
-Please note, that most of the desktop devices does not have a GPS sensor. In this case the measures can be inaccurate
+
+*Please note, that most of the desktop devices does not have a GPS sensor. In this case the measures can be inaccurate*
 
 ### Results:
 
