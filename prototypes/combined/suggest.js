@@ -14,6 +14,8 @@ const weatherClassifications = [
 const weatherClassificationIcons = [ 29, 6, 7, 5, 27, 17, 9, 3, 2, 1 ];
 const carCO2EmissionPerKm = 122; // [g]
 const busCO2EmissionPerPersonPerKm = 50; // [g]
+const kcalBurntByWalk = 50; // [kcal/km]
+const kcalBurntByBike = 30; // [kcal/km]
 const trafficStates = [
     {
         name: 'very low',
@@ -149,7 +151,8 @@ function processCarRoute(result) {
     vehicles.car.data = {
         length: routeData[0],
         duration: routeData[1],
-        emission: Math.floor(routeData[0] * carCO2EmissionPerKm / 1000) / 1000
+        emission: Math.floor(routeData[0] * carCO2EmissionPerKm / 1000) / 1000,
+        kcal: 0
     }
 }
 
@@ -165,16 +168,26 @@ function processPTRoute(result) {
 
     let route = result.routes[0];
     let routeData = calcLengthAndDuration(route);
+
     let emission = 0;
     route.sections.forEach((section) => {
         if (section.type == 'transit' && ['bus', 'privateBus', 'busRapid'].includes(section.transport.mode)) {
             emission += section.travelSummary.length * busCO2EmissionPerPersonPerKm / 1000; 
         }
     });
+
+    let kcal = 0;
+    route.sections.forEach((section) => {
+        if (section.type == 'pedestrian') {
+            kcal += section.travelSummary.length * kcalBurntByWalk / 1000; 
+        }
+    });
+
     vehicles.pt.data = {
         length: routeData[0],
         duration: routeData[1],
-        emission: Math.round(emission) / 1000
+        emission: Math.round(emission) / 1000,
+        kcal: kcal
     }
 }
 
@@ -196,7 +209,8 @@ function processBikeRoute(result) {
         reason: bikeReason,
         length: routeData[0],
         duration: routeData[1],
-        emission: 0
+        emission: 0,
+        kcal: routeData[0] * kcalBurntByBike / 1000
     }
 }
 
@@ -218,7 +232,8 @@ function processWalkRoute(result) {
         reason: walkReason,
         length: routeData[0],
         duration: routeData[1],
-        emission: 0
+        emission: 0,
+        kcal: routeData[0] * kcalBurntByWalk / 1000
     }
 }
 
@@ -294,18 +309,19 @@ function canUse(length, worstWeather, maxLength) {
 
 
 function tableHeader() {
-    return '<tr><th>Suggestion</th><th>Description</th><th>Emission</th></tr>';
+    return '<tr><th>Suggestion</th><th>Description</th><th>Emission reduced</th><th>Calories burnt</th></tr>';
 }
 
 
 function tableRow(ind, vehicle) {
     if (!vehicle.available) {
         return `<tr style="color: ${vehicle.color}"><td><i>${ind}. ${vehicle.name}</i></td><td><i>` +
-            `${vehicle.data.reason}</i></td><td><i>---</i></td>`;
+            `${vehicle.data.reason}</i></td><td><i>---</i></td><td><i>---</i></td>`;
     }
 
     return `<tr style="color: ${vehicle.color}"><td><b>${ind}. ${vehicle.name}</b></td><td>${formatTime(vehicle.data.duration)}<br>` +
-        `${Math.floor(vehicle.data.length / 10) / 100} km</td><td>${vehicle.data.emission} kg</td>`;
+        `${Math.floor(vehicle.data.length / 10) / 100} km</td><td>${vehicles.car.data.emission - vehicle.data.emission} kg</td>` +
+        `<td>${Math.floor(vehicle.data.kcal)} kcal</td></tr>`;
 }
 
 
