@@ -26,6 +26,10 @@ Route::get('/', function () {
     return view('pages.welcome');
 })->name("home");
 
+Route::get('/suggest', function () {
+    return view('pages.suggest');
+})->name("suggest");
+
 Route::get('/about-us', function () {
     return view('pages.about',[
     'page_name' => 'About us page',

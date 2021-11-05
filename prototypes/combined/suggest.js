@@ -53,8 +53,8 @@ const trafficStates = [
 let walkSpeed = 1.5; // [m/s]
 let maxWalkDistance = 2000; // [m]
 let maxBikeDistance = 4000; // [m]
-let worstWeatherToWalk = 6;
-let worstWeatherToBike = 6;
+let worstWeatherToWalk = 4;
+let worstWeatherToBike = 4;
 
 
 // UI elements for displaying results
@@ -320,8 +320,8 @@ function tableRow(ind, vehicle) {
     }
 
     return `<tr style="color: ${vehicle.color}"><td><b>${ind}. ${vehicle.name}</b></td><td>${formatTime(vehicle.data.duration)}<br>` +
-        `${Math.floor(vehicle.data.length / 10) / 100} km</td><td>${vehicles.car.data.emission - vehicle.data.emission} kg</td>` +
-        `<td>${Math.floor(vehicle.data.kcal)} kcal</td></tr>`;
+        `${Math.round(vehicle.data.length / 10) / 100} km</td><td>${vehicles.car.data.emission - vehicle.data.emission} kg</td>` +
+        `<td>${Math.round(vehicle.data.kcal)} kcal</td></tr>`;
 }
 
 
