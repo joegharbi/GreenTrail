@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +27,13 @@ Route::get('/', function () {
     return view('pages.welcome');
 })->name("home");
 
-Route::get('/suggest', function () {
-    return view('pages.suggest');
+Route::get('/suggest', function (Request $request) {
+    return view('pages.suggest',[
+        'from_lat' => $request->input('from_lat') ?? null,
+        'from_lng' => $request->input('from_lng') ?? null,
+        'to_lat' => $request->input('to_lat') ?? null,
+        'to_lng' => $request->input('to_lng') ?? null
+    ]);
 })->name("suggest");
 
 Route::get('/about-us', function () {
