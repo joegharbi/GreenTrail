@@ -54,17 +54,48 @@
 
         <!-- Name -->
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="name" value="{{ __('Name') }}" />
+            {{-- <x-jet-label for="name" value="{{ __('Name') }}" /> --}}
+            <label for="name"> {{ __('Name') }} </label>
             <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" />
             <x-jet-input-error for="name" class="mt-2" />
         </div>
 
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="email" value="{{ __('Email') }}" />
+            <label for="email"> {{ __('Email') }} </label>
+            {{-- 7/11/2021 --}}
+            {{-- <x-jet-label for="email" value="{{ __('Email') }}" /> --}} 
             <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
             <x-jet-input-error for="email" class="mt-2" />
         </div>
+
+        <!-- maxWalkDistance(int meters) 7/11/2021 -->
+        <div class="col-span-6 sm:col-span-4">
+            <label for="maxWalkDistance"> {{ __('maxWalkDistance') }} </label>
+            <x-jet-input id="maxWalkDistance" type="text" class="mt-1 block w-full" wire:model.defer="state.maxWalkDistance" autocomplete="maxWalkDistance" />
+            <x-jet-input-error for="maxWalkDistance" class="mt-2" />
+        </div>
+
+        <!-- maxBikeDistance(int meters) 7/11/2021 -->
+        <div class="col-span-6 sm:col-span-4">
+            <label for="maxBikeDistance"> {{ __('maxBikeDistance') }} </label>
+            <x-jet-input id="maxBikeDistance" type="text" class="mt-1 block w-full" wire:model.defer="state.maxBikeDistance" autocomplete="maxBikeDistance" />
+            <x-jet-input-error for="maxBikeDistance" class="mt-2" />
+        </div>
+
+       <!-- worstWeatherToWalk(int meters) 7/11/2021 -->
+       <div class="col-span-6 sm:col-span-4">
+        <label for="worstWeatherToWalk"> {{ __('worstWeatherToWalk') }} </label>
+        <x-jet-input id="worstWeatherToWalk" type="text" class="mt-1 block w-full" wire:model.defer="state.worstWeatherToWalk" autocomplete="worstWeatherToWalk" />
+        <x-jet-input-error for="worstWeatherToWalk" class="mt-2" />
+        </div> 
+        
+        <!-- worstWeatherToBike(int meters) 7/11/2021 -->
+        <div class="col-span-6 sm:col-span-4">
+            <label for="worstWeatherToBike"> {{ __('worstWeatherToBike') }} </label>
+            <x-jet-input id="worstWeatherToBike" type="text" class="mt-1 block w-full" wire:model.defer="state.worstWeatherToBike" autocomplete="worstWeatherToBike" />
+            <x-jet-input-error for="worstWeatherToBike" class="mt-2" />
+        </div> 
     </x-slot>
 
     <x-slot name="actions">

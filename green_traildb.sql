@@ -2,9 +2,8 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
---
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2021 at 05:20 PM
+-- Generation Time: Nov 07, 2021 at 09:09 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.3.31
 
@@ -60,7 +59,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '2014_10_12_200000_add_two_factor_columns_to_users_table', 1),
 (4, '2019_08_19_000000_create_failed_jobs_table', 1),
 (5, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(6, '2021_10_24_092228_create_sessions_table', 1);
+(6, '2021_10_24_092228_create_sessions_table', 1),
+(7, '2021_11_07_192216_add_max_walk_distance_to_users_table', 1),
+(8, '2021_11_07_194124_add_max_bike_distance_to_users_table', 1),
+(9, '2021_11_07_194206_add_worst_weather_to_walk_to_users_table', 1),
+(10, '2021_11_07_194243_add_worst_weather_to_bike_to_users_table', 1);
 
 -- --------------------------------------------------------
 
@@ -73,13 +76,6 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `password_resets`
---
-
-INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
-('mohamedabid092@gmail.com', '$2y$10$xcxLJiEn78uCp0tN0liVxu3D2wxWDqixRah16N5STcmljBPRGHSiy', '2021-10-24 08:29:31');
 
 -- --------------------------------------------------------
 
@@ -119,10 +115,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('2WAzBrXsbtBDQwXoNS6NsjWOXH6wF65iebVxheB9', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoicXZ4Z0pWQVRTQ21aMlA3YTVTUEV6ZGdadVd3REtjV0lHeVZYVm5YYyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly9ncmVlbnRyYWlsLmNvbSI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCRrY3JVZnZpczBTVS9JQWNBOTNTZmUuai5YM0NqazBjSHpqUUc0bzA3clY5bjRiQ1VrNXlUNiI7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAka2NyVWZ2aXMwU1UvSUFjQTkzU2ZlLmouWDNDamswY0h6alFHNG8wN3JWOW40YkNVazV5VDYiO3M6NDoiYXV0aCI7YToxOntzOjIxOiJwYXNzd29yZF9jb25maXJtZWRfYXQiO2k6MTYzNTA4NTk2ODt9fQ==', 1635088704),
-('IKujPdFQE5HQbMF6OkbikXxItlX3hhwSTBH1nL1c', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiTlpGa0x2YkZZOVVYYmJZZ0lzaWNVV3NPb2kzNHJoUGtyT0RoM0J0cCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1635088727),
-('On1bLizc4yI0lxSJm8AAdJb5hkveHCcmFKaXzgI5', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36 Edg/95.0.1020.30', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiMzk4MkthN3VNb1FoSEhGQ1RyR3JCeDRBQjVISlpBZ05LYzJKbUdCdyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9yZWdpc3RlciI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1635086479),
-('pJTXbchUiflC8SrK7vzKzQv2pCnXRsBaFtqo1CTU', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoieWlKZlZYbGFrdEpxWmRobW1vb09RdGd0WGk3SVpNQWpvQnJUZkE2MiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1635088444);
+('g88dWpSchec197jaTqpgdSRVFZWCyHzuCbmIoSnq', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 Edg/95.0.1020.44', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiaFNlV21OQnBTWFpyM0lRZzYwZDNSMXhwbEU1TUVMVkhOa1d0ck9RYyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM0OiJodHRwOi8vbG9jYWxob3N0OjgwMDAvdXNlci9wcm9maWxlIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJFNDWG9YdEFQeXowNEZrUmoyQmxJcU9qWFV0YUYwa3R5ZkhqdndaLmQ4L2RsY2M2Y0dQekdPIjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCRTQ1hvWHRBUHl6MDRGa1JqMkJsSXFPalhVdGFGMGt0eWZIanZ3Wi5kOC9kbGNjNmNHUHpHTyI7fQ==', 1636315547);
 
 -- --------------------------------------------------------
 
@@ -142,15 +135,19 @@ CREATE TABLE `users` (
   `current_team_id` bigint(20) UNSIGNED DEFAULT NULL,
   `profile_photo_path` varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `maxWalkDistance` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `maxBikeDistance` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `worstWeatherToWalk` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `worstWeatherToBike` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'Mohammed', 'mohamedabid092@gmail.com', NULL, '$2y$10$kcrUfvis0SU/IAcA93Sfe.j.X3Cjk0cHzjQG4o07rV9n4bCUk5yT6', 'eyJpdiI6IkhCTUpvQ3g1N2lDblV4cmZsbG1taVE9PSIsInZhbHVlIjoiTEkydTE4bnZjdGp3MWU1TzU5eGVTeS9JTWN4dXRwSWIrLzhzUFJKUFlhRT0iLCJtYWMiOiIwMjc0ZmFjNTE5MzQwOGMzNjgyYjYzMmI5YjFkNWE0MmI1OWE0Y2QyMTY0NGNhZmZlOGY2YmVjZDU0YTE1NzM0IiwidGFnIjoiIn0=', 'eyJpdiI6ImlCTTlESmhGaytqRDRVY1oyQUpQV0E9PSIsInZhbHVlIjoiQ3A1dTlqUUhpK3hRNGp4VnBJZmpsVmlma3gvUjVJVmRhb3dWTENlNDJtbVpnVlh2SFVheFFOU3QvM2RjZXF1b2x4TU5JVUdNOHAxYzlPV0lQN3JBZTVVQS9NV3VpQTRGc1M4TWZWRWJMNDA2OXRpSFNRTWlnKzYzaXh5cFUxTDNFNEVHSlBqRDJZWGJvWmNNWTQwbHV2d0JieHZPTVh4cXYreFhmV09hdEZUZXZnUmhIUGtEVzVXS1A3Qnp4ZXFydTgwVVRMczBwbjVZSmxhQStQQnpEQm9nK2J0NVBmZ1ZIUmQ4aEMzZDI3Q01HMjRvazhDd2d2b2FwekxLU3hhWDB3bTVLb2tVR2VSMVBrWmpZU2M3cHc9PSIsIm1hYyI6IjQyYmM0YWIzMTlmZWM2NzgxMjgwYmU1ZWQ2NTI2ZmVhNGY1NzIwMWU5NDUyNmZjMjJhYjAwNWM0ZWE2M2M1YjciLCJ0YWciOiIifQ==', NULL, NULL, NULL, '2021-10-24 07:57:53', '2021-10-24 12:32:48');
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`, `maxWalkDistance`, `maxBikeDistance`, `worstWeatherToWalk`, `worstWeatherToBike`) VALUES
+(1, 'Mohammed Abed ', 'mohamedabid092@gmail.com', NULL, '$2y$10$SCXoXtAPyz04FkRj2BlIqOjXUtaF0ktyfHjvwZ.d8/dlcc6cGPzGO', NULL, NULL, NULL, NULL, NULL, '2021-11-07 19:00:00', '2021-11-07 19:05:43', '1000', '2000', '100', '300');
 
 --
 -- Indexes for dumped tables
@@ -212,7 +209,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`

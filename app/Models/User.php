@@ -27,6 +27,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'maxWalkDistance',
+        'maxBikeDistance',
+        'worstWeatherToWalk',
+        'worstWeatherToBike',
     ];
 
     /**
@@ -57,5 +61,6 @@ class User extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
+
     ];
 }

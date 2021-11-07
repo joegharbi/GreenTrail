@@ -35,6 +35,12 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             $user->forceFill([
                 'name' => $input['name'],
                 'email' => $input['email'],
+                // 7/11/2021
+                'maxWalkDistance' => $input['maxWalkDistance'],
+                'maxBikeDistance' => $input['maxBikeDistance'],
+                'worstWeatherToWalk' => $input['worstWeatherToWalk'],
+                'worstWeatherToBike' => $input['worstWeatherToBike'],
+
             ])->save();
         }
     }
