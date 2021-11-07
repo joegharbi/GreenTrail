@@ -41,16 +41,16 @@ Route::get('/about-us', function () {
 //(URI , view , Array of data )
 Route::view('contact', 'pages/contact',[
     'page_name' => 'contact us page',
-    'page_descrption' => 'Descrbtion will be her '
+    'page_description' => 'Description will be her '
 ])->name("contact");
 
 Route::get('category/{id}', function ($id) {
     $cats = [
         '1' => 'Weather',
-        '2' => 'Trafic'
+        '2' => 'Traffic'
            ];
 
     return view("pages.category",[
-        'the_id' =>  $cats[$id] ?? "This id not found" 
+        'the_id' =>  $cats[$id] ?? "This id not found"
                            ]);
 });

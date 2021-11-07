@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7893730b3e24702aae4bed0c1463fc44",
+    "content-hash": "5c9e9987438fd9d111c4c4dbae10044c",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5851,6 +5851,45 @@
             "time": "2020-07-13T06:12:54+00:00"
         },
         {
+            "name": "twbs/bootstrap-icons",
+            "version": "v1.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twbs/icons.git",
+                "reference": "25787cde29cb242261bc34714eda28c5350316a4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twbs/icons/zipball/25787cde29cb242261bc34714eda28c5350316a4",
+                "reference": "25787cde29cb242261bc34714eda28c5350316a4",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Otto",
+                    "email": "markdotto@gmail.com"
+                }
+            ],
+            "description": "Official open source SVG icon library for Bootstrap",
+            "homepage": "https://icons.getbootstrap.com/",
+            "keywords": [
+                "bootstrap",
+                "icon font",
+                "icons",
+                "svg"
+            ],
+            "support": {
+                "issues": "https://github.com/twbs/icons/issues",
+                "source": "https://github.com/twbs/icons/tree/v1.7.0"
+            },
+            "time": "2021-11-01T18:57:04+00:00"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v5.3.1",
             "source": {
@@ -8573,5 +8612,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.0.0"
 }
