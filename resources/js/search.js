@@ -79,7 +79,7 @@ function onFocusOut(id) {
 function sendRequest(apiType, params, responseHandler) {
     console.log('Sending request to ' + apiType + ' with params: ' + params);
     fetch(`${getAPI_URL()}/${apiType}.php?${params}`, { method: "GET", mode: 'cors' })
-        .then(response => { console.log(response); return response.json(); })
+        .then(response => { return response.json(); })
         .then(response => { responseHandler(response); })
         .catch(error => alert(error.message));
 }
