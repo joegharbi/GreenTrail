@@ -12,7 +12,7 @@
     function send_request($endpoint, $params) {
         $client = new \GuzzleHttp\Client();
         try {
-            $params['apiKey'] = trim(file_get_contents(asset('resources/api/api_key.txt')));
+            $params['apiKey'] = trim(File::get(resource_path('api/api_key.txt')));
             $response = $client->request('GET', $endpoint, ['query' => $params]);
 
             return ['code' => $response->getStatusCode(), 'body' => json_decode($response->getBody(), true)];
@@ -139,7 +139,7 @@
                 <div class="rounded my-bg m-2">
                     <div class="row m-2 align-items-center">
                         <div class="col-2 p-2 m-0">
-                            <img src="{{ asset('public/svg/traffic.svg') }}" />
+                            <img src="{{ asset('/svg/traffic.svg') }}" />
                         </div>
                         <div class="col-4 p-2">Traffic state</div>
                         <div class="col-6 p-2"><b id="trafficState"></b></div>
@@ -161,19 +161,19 @@
         <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
         <script type="text/javascript">
             function getAPI_URL() {
-                return "{{ asset('resources/api') }}";
+                return "{{ route('api') }}";
             }
 
             function getSVGFolder() {
-                return "{{ asset('public/svg') }}";
+                return "{{ asset('/svg') }}";
             }
 
             function getWeatherType() {
                 return "{{ $weatherData['iconName'] }}";
             }
         </script>
-        <script type="text/javascript" src="{{ asset('resources/js/map.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('resources/js/suggest.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('/js/map.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('/js/suggest.js') }}"></script>
     @else
         <div class="row p-0">
             <div class="col-md-12 p-2 m-2 rounded my-bg text-danger">

@@ -9,7 +9,7 @@ let lineGroup;
 
 function initMap(mainFunc) {
     console.log('Init map');
-    fetch(`${getAPI_URL()}/apikey.php`, { method: "GET", mode: 'cors' })
+    fetch(`${getAPI_URL()}/key`)
         .then(response => { return response.text(); })
         .then(response => { intiMapWithAPIKey(response, mainFunc); })
         .catch(error => alert(error.message));

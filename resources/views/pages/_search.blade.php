@@ -14,7 +14,7 @@
                 </div>
                 <div class="col-1 d-grid gap-2">
                     <button id="gps" class="btn btn-success btn-lg p-1" onclick="useGPS()">
-                        <img src="{{ asset('public/svg/gps.svg') }}" />
+                        <img src="{{ asset('/svg/gps.svg') }}" />
                     </button>
                 </div>
             </div>
@@ -30,7 +30,7 @@
 </div>
 <script type="text/javascript">
     function getAPI_URL() {
-        return "{{ asset('resources/api') }}";
+        return "{{ route('api') }}";
     }
 </script>
-<script type="text/javascript" src="{{ asset('resources/js/search.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/search.js') }}"></script>

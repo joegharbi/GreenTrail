@@ -50,13 +50,38 @@ Route::view('contact', 'pages/contact',[
     'page_description' => 'Description will be her '
 ])->name("contact");
 
-Route::get('category/{id}', function ($id) {
-    $cats = [
-        '1' => 'Weather',
-        '2' => 'Traffic'
-           ];
 
-    return view("pages.category",[
-        'the_id' =>  $cats[$id] ?? "This id not found"
-                           ]);
-});
+Route::group(['prefix' => 'api'], function() {
+    Route::get('/',function() {  
+        return 'HERE API Connection';
+    })->name('api');
+
+    Route::get('key',function() {  
+        return File::get(resource_path('api/api_key.txt'));
+    })->name('api/key');
+
+    function send_api_request(Request $request, $endpoint) {
+        $params = $request->all();
+        $client = new \GuzzleHttp\Client();
+        try {
+            $params['apiKey'] = trim(File::get(resource_path('api/api_key.txt')));
+            $response = $client->request('GET', $endpoint, ['query' => $params]);
+
+            return $response->getBody();
+        } catch (GuzzleHttp\Exception\BadResponseException $e) {
+            return $e->getResponse()->getBody()->getContents();
+        }
+    }
+
+    Route::get('/autocomplete', function(Request $request) { 
+        return send_api_request($request, 'https://autocomplete.search.hereapi.com/v1/autocomplete');
+    });
+
+    Route::get('/revgeocode', function(Request $request) { 
+        return send_api_request($request, 'https://revgeocode.search.hereapi.com/v1/revgeocode');
+    });
+
+    Route::get('/geocode', function(Request $request) { 
+        return send_api_request($request, 'https://geocode.search.hereapi.com/v1/geocode');
+    });
+}); 
