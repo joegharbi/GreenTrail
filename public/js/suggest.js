@@ -48,12 +48,6 @@ const trafficStates = [
     }
 ];
 
-// User Data
-let maxWalkDistance = 2000; // [m]
-let maxBikeDistance = 4000; // [m]
-let worstWeatherToWalk = 4;
-let worstWeatherToBike = 4;
-
 const urlParams = new URLSearchParams(window.location.search);
 const fromLoc = {
     lat: urlParams.get('from_lat'),

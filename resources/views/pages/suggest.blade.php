@@ -9,6 +9,15 @@
     Try with:
     /suggest?from_lat=47.49632&from_lng=19.06963&to_lat=47.49736&to_lng=19.05445
     */
+
+    function get_user_data($field, $default) {
+        if (Auth::user() && isset(Auth::user()[$field])) {
+            return Auth::user()[$field];
+        }
+        return $default;
+    }
+
+
     function send_request($endpoint, $params) {
         $client = new \GuzzleHttp\Client();
         try {
@@ -171,6 +180,12 @@
             function getWeatherType() {
                 return "{{ $weatherData['iconName'] }}";
             }
+
+            // User Data
+            const maxWalkDistance = {{ get_user_data('maxWalkDistance', 2000) }}; // [m]
+            const maxBikeDistance = {{ get_user_data('maxBikeDistance', 4000) }}; // [m]
+            const worstWeatherToWalk = {{ get_user_data('worstWeatherToWalk', 6) }};
+            const worstWeatherToBike = {{ get_user_data('worstWeatherToBike', 6) }};
         </script>
         <script type="text/javascript" src="{{ asset('/js/map.js') }}"></script>
         <script type="text/javascript" src="{{ asset('/js/suggest.js') }}"></script>
