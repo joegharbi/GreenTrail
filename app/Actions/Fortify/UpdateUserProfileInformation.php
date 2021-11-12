@@ -22,6 +22,10 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
+            'maxWalkDistance' => ['required', 'int', 'min:0'],
+            'maxBikeDistance' => ['required', 'int', 'min:0'],
+            'worstWeatherToWalk' => ['required', 'int', 'min:1', 'max:10'],
+            'worstWeatherToBike' => ['required', 'int', 'min:1', 'max:10'],
         ])->validateWithBag('updateProfileInformation');
 
         if (isset($input['photo'])) {

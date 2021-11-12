@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'GreenTrail')
+@section('title', 'Green Trail')
 
 @section('content')
     <?php

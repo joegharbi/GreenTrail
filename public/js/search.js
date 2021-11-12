@@ -118,4 +118,8 @@ function handleInputGeoCodeResponse(response, id) {
     } else {
         toLoc = response.items[0].position;
     }
+
+    if (fromLoc != undefined && toLoc != undefined) {
+        document.getElementById('go').disabled = false;
+    }
 }

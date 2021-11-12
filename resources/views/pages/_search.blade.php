@@ -25,7 +25,7 @@
             </label>
             <input type="text" class="form-control" id="to" onkeydown="onInputEnter('to')" onfocusout="onFocusOut('to')">
         </div>
-        <button id="go" class="btn btn-success btn-lg">GO</button>
+        <button id="go" class="btn btn-success btn-lg" disabled>GO</button>
     </div>
 </div>
 <script type="text/javascript">

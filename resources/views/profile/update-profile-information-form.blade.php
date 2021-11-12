@@ -71,31 +71,35 @@
 
         <!-- maxWalkDistance(int meters) 7/11/2021 -->
         <div class="col-span-6 sm:col-span-4">
-            <label for="maxWalkDistance"> {{ __('maxWalkDistance') }} </label>
+            <label for="maxWalkDistance"> {{ __('Maximum distance to walk (meters)') }} </label>
             <x-jet-input id="maxWalkDistance" type="text" class="mt-1 block w-full" wire:model.defer="state.maxWalkDistance" autocomplete="maxWalkDistance" />
             <x-jet-input-error for="maxWalkDistance" class="mt-2" />
         </div>
 
         <!-- maxBikeDistance(int meters) 7/11/2021 -->
         <div class="col-span-6 sm:col-span-4">
-            <label for="maxBikeDistance"> {{ __('maxBikeDistance') }} </label>
+            <label for="maxBikeDistance"> {{ __('Maximum distance to bike (meters)') }} </label>
             <x-jet-input id="maxBikeDistance" type="text" class="mt-1 block w-full" wire:model.defer="state.maxBikeDistance" autocomplete="maxBikeDistance" />
             <x-jet-input-error for="maxBikeDistance" class="mt-2" />
         </div>
 
-       <!-- worstWeatherToWalk(int meters) 7/11/2021 -->
-       <div class="col-span-6 sm:col-span-4">
-        <label for="worstWeatherToWalk"> {{ __('worstWeatherToWalk') }} </label>
-        <x-jet-input id="worstWeatherToWalk" type="text" class="mt-1 block w-full" wire:model.defer="state.worstWeatherToWalk" autocomplete="worstWeatherToWalk" />
+        <!-- worstWeatherToWalk(int meters) 7/11/2021 -->
+        <div class="col-span-6 sm:col-span-4">
+        <label for="worstWeatherToWalk"> {{ __('Worst weather category to walk') }} </label>
+        <x-jet-input id="worstWeatherToWalk" type="range" min="1" max="10" step="1" value="state.worstWeatherToWalk" class="mt-1 block w-full" wire:model.defer="state.worstWeatherToWalk" autocomplete="worstWeatherToWalk" oninput="onInput('worstWeatherToWalk')"/>
+        <div id="worstWeatherToWalkIndicator" style="height:32px; position:relative"></div>
         <x-jet-input-error for="worstWeatherToWalk" class="mt-2" />
         </div> 
-        
+
         <!-- worstWeatherToBike(int meters) 7/11/2021 -->
         <div class="col-span-6 sm:col-span-4">
-            <label for="worstWeatherToBike"> {{ __('worstWeatherToBike') }} </label>
-            <x-jet-input id="worstWeatherToBike" type="text" class="mt-1 block w-full" wire:model.defer="state.worstWeatherToBike" autocomplete="worstWeatherToBike" />
-            <x-jet-input-error for="worstWeatherToBike" class="mt-2" />
+        <label for="worstWeatherToBike"> {{ __('Worst weather category to bike') }} </label>
+        <x-jet-input id="worstWeatherToBike" type="range" min="1" max="10" step="1" value="state.worstWeatherToBike" class="mt-1 block w-full" wire:model.defer="state.worstWeatherToBike" autocomplete="worstWeatherToBike" oninput="onInput('worstWeatherToBike')"/>
+        <div id="worstWeatherToBikeIndicator" style="height:32px; position:relative"></div>
+        <x-jet-input-error for="worstWeatherToBike" class="mt-2" />
         </div> 
+
+        <script type="text/javascript" src="{{ asset('/js/profile.js') }}"></script>
     </x-slot>
 
     <x-slot name="actions">
@@ -103,7 +107,7 @@
             {{ __('Saved.') }}
         </x-jet-action-message>
 
-        <x-jet-button wire:loading.attr="disabled" wire:target="photo">
+        <x-jet-button wire:loading.attr="disabled" wire:target="photo" onclick="setup(1000)">
             {{ __('Save') }}
         </x-jet-button>
     </x-slot>
