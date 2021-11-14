@@ -44,10 +44,17 @@ Route::get('/suggest', function (Request $request) {
 Route::get('/about-us', function () {
     return view('pages.about',[
     'page_name' => 'About us page',
-    'page_descrption' => 'Descrbtion will be her '
+    'page_description' => 'Description will be her '
     ]);
     // return 'green trail';
 })->name("about-us");
+
+//Route::get('/logout',function () {
+//    //logout user
+//    auth()->logout();
+//    // redirect to homepage
+//    return redirect('/');
+//})->name("logout");
 
 //(URI , view , Array of data )
 Route::view('contact', 'pages/contact',[
@@ -57,11 +64,12 @@ Route::view('contact', 'pages/contact',[
 
 
 Route::group(['prefix' => 'api'], function() {
-    Route::get('/',function() {  
+    Route::get('/',function() {
         return 'HERE API Connection';
     })->name('api');
 
-    Route::get('key',function() {  
+    Route::get('key',function() {
+        var_dump(openssl_get_cert_locations());
         return File::get(resource_path('api/api_key.txt'));
     })->name('api/key');
 
@@ -78,18 +86,18 @@ Route::group(['prefix' => 'api'], function() {
         }
     }
 
-    Route::get('/autocomplete', function(Request $request) { 
+    Route::get('/autocomplete', function(Request $request) {
         return send_api_request($request, 'https://autocomplete.search.hereapi.com/v1/autocomplete');
     });
 
-    Route::get('/revgeocode', function(Request $request) { 
+    Route::get('/revgeocode', function(Request $request) {
         return send_api_request($request, 'https://revgeocode.search.hereapi.com/v1/revgeocode');
     });
 
-    Route::get('/geocode', function(Request $request) { 
+    Route::get('/geocode', function(Request $request) {
         return send_api_request($request, 'https://geocode.search.hereapi.com/v1/geocode');
     });
-}); 
+});
 
 // 14-11-2021
 // Route::get('/user/{id}', [UserController::class, 'show']);
