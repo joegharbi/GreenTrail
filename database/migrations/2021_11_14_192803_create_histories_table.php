@@ -18,6 +18,7 @@ class CreateHistoriesTable extends Migration
             // need to fix later relasthinship btw one- to - many  14/11/2021 to do addconstrant in true syntax
             $table->integer('user_id');
             $table->string('source');
+            $table->string('destination');             
             $table->string('chosen_transportation');
             $table->integer('reduced_emission');
             $table->timestamps();
