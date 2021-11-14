@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\ContactController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -85,3 +90,8 @@ Route::group(['prefix' => 'api'], function() {
         return send_api_request($request, 'https://geocode.search.hereapi.com/v1/geocode');
     });
 }); 
+
+// 14-11-2021
+// Route::get('/user/{id}', [UserController::class, 'show']);
+Route::get('/history', [HistoryController::class, 'show']);
+// Route::get('/contact', [ContactController::class, 'show']);
