@@ -69,7 +69,6 @@ Route::group(['prefix' => 'api'], function() {
     })->name('api');
 
     Route::get('key',function() {
-        var_dump(openssl_get_cert_locations());
         return File::get(resource_path('api/api_key.txt'));
     })->name('api/key');
 
