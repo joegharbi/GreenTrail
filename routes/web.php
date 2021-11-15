@@ -23,9 +23,9 @@ use App\Http\Controllers\ContactController;
 //     return view('welcome');
 // });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])
+    ->get('/dashboard', 'App\Http\Controllers\DashboardController@viewDashboard')
+    ->name('dashboard');
 
 // ---------------------------------------------------------
 Route::get('/', function () {
@@ -100,5 +100,25 @@ Route::group(['prefix' => 'api'], function() {
 
 // 14-11-2021
 // Route::get('/user/{id}', [UserController::class, 'show']);
-Route::get('/history', [HistoryController::class, 'show']);
+// Route::get('/history', [HistoryController::class, 'show']);
 // Route::get('/contact', [ContactController::class, 'show']);
+
+
+
+// MK
+Route::view('calendar', 'pages/calendar/calendar_dashboard',[
+    'page_name' => 'Calendar page',
+    'page_descrption' => 'Scheduling a rout'
+])->name("calendar_dashboard");
+
+Route::post('/calendar/post', 'App\Http\Controllers\CalendarController@viewDates');
+Route::post('/calendar/post_schedule', 'App\Http\Controllers\CalendarController@saveDates');
+Route::get('/calendar/schedules', 'App\Http\Controllers\CalendarController@viewSchedules');
+Route::get('/calendar/schedules/delete/{id}', 'App\Http\Controllers\CalendarController@deleteSchedule');
+
+// Dashboard
+// Route::post('/dashboard', 'App\Http\Controllers\DashboardController@viewDashboard');
+// ##replaced by the upper code##
+
+// History
+Route::get('/history', 'App\Http\Controllers\HistoryController@viewHistory');

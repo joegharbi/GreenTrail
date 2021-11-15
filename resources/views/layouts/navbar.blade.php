@@ -13,11 +13,12 @@
                </span>
                 <a class="nav-link text-white" href="{{route('about-us')}}">About</a>
                 <a class="nav-link text-white" href="{{route('contact')}}">Contact</a>
+                <a class="nav-link text-white" href="{{route('calendar_dashboard')}}">Calendar</a>
             </div>
         </div>
         @if (Route::has('login'))
                 @auth
-                    <a href="{{ url('/#') }}" class="btn btn-primary">History</a>
+                    <a href="{{ url('history') }}" class="btn btn-primary">History</a>
                 <a href="{{ route('dashboard')}}" class="btn btn-dark m-2">Dashboard</a>
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
