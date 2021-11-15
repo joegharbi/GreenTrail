@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ChosenTransportController;
 
 
 /*
@@ -102,3 +103,5 @@ Route::group(['prefix' => 'api'], function() {
 // Route::get('/user/{id}', [UserController::class, 'show']);
 Route::get('/history', [HistoryController::class, 'show']);
 // Route::get('/contact', [ContactController::class, 'show']);
+
+Route::post('/chosentransport', [ChosenTransportController::class, 'store'])->name('chosentransport');

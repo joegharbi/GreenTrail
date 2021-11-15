@@ -29,6 +29,10 @@
     </div>
 </div>
 <script type="text/javascript">
+    function getSuggest_URL() {
+        return "{{ route('suggest') }}";
+    }
+    
     function getAPI_URL() {
         return "{{ route('api') }}";
     }
