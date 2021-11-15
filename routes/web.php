@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ChosenTransportController;
 
 
 /*
@@ -122,3 +123,5 @@ Route::get('/calendar/schedules/delete/{id}', 'App\Http\Controllers\CalendarCont
 
 // History
 Route::get('/history', 'App\Http\Controllers\HistoryController@viewHistory');
+
+Route::post('/chosentransport', [ChosenTransportController::class, 'store'])->name('chosentransport');

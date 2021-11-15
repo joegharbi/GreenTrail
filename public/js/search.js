@@ -1,5 +1,6 @@
 let fromLoc = undefined;
 let toLoc = undefined;
+let lastCheckedLoc = '';
 
 
 document.getElementById("go").onclick = function () {
@@ -13,9 +14,7 @@ document.getElementById("go").onclick = function () {
         return;
     }
 
-    let currURL = window.location.href;
-    let rootURL = currURL.substr(0, currURL.indexOf(currURL.indexOf('/'), currURL.indexOf('//') + 2) + 1);
-    window.location.href = `${rootURL}suggest?from_lat=${fromLoc.lat}&from_lng=${fromLoc.lng}&to_lat=${toLoc.lat}&to_lng=${toLoc.lng}`;
+    window.location.href = `${getSuggest_URL()}?from_lat=${fromLoc.lat}&from_lng=${fromLoc.lng}&to_lat=${toLoc.lat}&to_lng=${toLoc.lng}`;
 };
 
 
@@ -69,7 +68,7 @@ function onInputEnter(id) {
 
 function onFocusOut(id) {
     let value = document.getElementById(id).value;
-    if (value) {
+    if (value != '' && value != lastCheckedLoc) {
         sendRequest('autocomplete', `q=${encodeURIComponent(value)}`, 
             response => { handleInputAutoCompleteResponse(response, id); });
     }
@@ -101,6 +100,7 @@ function handleInputAutoCompleteResponse(response, id) {
 
     let value = response.items[0].title;
     document.getElementById(id).value = value;
+    lastCheckedLoc = value;
     sendRequest('geocode', `q=${encodeURIComponent(value)}`, 
         response => { handleInputGeoCodeResponse(response, id); });
 }

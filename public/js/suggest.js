@@ -158,9 +158,10 @@ function displaySuggestions(order) {
 function displaySuggestion(vehicle) {
     let button;
     if (vehicle.name == 'Car') {
-        button = '<button class="btn btn-warning"><b>Use car</b></button>';
+        button = `<button class="btn btn-warning" onclick="onTransportChoose('${vehicle.name}', 0)"><b>Use car</b></button>`;
     } else {
-        button = `<button class="btn btn-success btn-sm"><b>Reduce emission by ${formatEmission(vehicles.car.data.emission - vehicle.data.emission)}</b>`;
+        let emissionReduction = vehicles.car.data.emission - vehicle.data.emission;
+        button = `<button class="btn btn-success btn-sm" onclick="onTransportChoose('${vehicle.name}', ${emissionReduction})"><b>Reduce emission by ${formatEmission(emissionReduction)}</b>`;
     }
     return `<div class="row m-2 align-items-center rounded ${vehicle.class}">
         <div class="col-1 col-md-2 col-lg-1 p-2 m-0">
@@ -179,6 +180,37 @@ function displaySuggestion(vehicle) {
 
 function displayTitle(title) {
     return `<div class="row m-2"><div class="col-12 text-center h6 m-0 p-0">${title}</div></div>`;
+}
+
+
+function onTransportChoose(vehicle, emissionReductionKG) {
+    let userID = getUserID();
+    if (userID) {
+        fetch(getChosenTransport_URL(), {
+            method: 'post',
+            body: JSON.stringify({
+                    _token: getCSRF_Token(),
+                    user_id: userID,
+                    source: document.getElementById('from').innerText,
+                    destination: document.getElementById('to').innerText,
+                    chosen_transportation: vehicle,
+                    reduced_emission: Math.round(emissionReductionKG * 1000)
+            }),
+            headers: {
+                'X-CSRF-TOKEN': getCSRF_Token(),
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => { return response.text(); })
+            .then(response => { ckeckDBResponse(response); })
+            .catch(error => alert(error.message));
+    }
+}
+
+
+function ckeckDBResponse(response) {
+    console.log(response);
+    window.location.href = getHome_URL();
 }
 
 

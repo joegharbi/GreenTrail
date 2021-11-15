@@ -125,11 +125,11 @@
                 <div class="rounded my-bg m-2">
                     <div class="row m-2">
                         <div class="col-2 col-md-3 col-lg-2 p-2">From:</div>
-                        <div class="col-10 col-md-9 col-lg-10 mt-1 mb-1 pt-1 pb-1 rounded bg-light"><?=$fromPlaceName?></div>
+                        <div class="col-10 col-md-9 col-lg-10 mt-1 mb-1 pt-1 pb-1 rounded bg-light" id="from"><?=$fromPlaceName?></div>
                     </div>
                     <div class="row m-2">
                         <div class="col-2 col-md-3 col-lg-2 p-2">To:</div>
-                        <div class="col-10 col-md-9 col-lg-10 mt-1 mb-1 pt-1 pb-1 rounded bg-light"><?=$toPlaceName?></div>
+                        <div class="col-10 col-md-9 col-lg-10 mt-1 mb-1 pt-1 pb-1 rounded bg-light" id="to"><?=$toPlaceName?></div>
                     </div>
                 </div>
                 <div class="rounded my-bg m-2">
@@ -169,8 +169,20 @@
         <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
         <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
         <script type="text/javascript">
+            function getHome_URL() {
+                return "{{ route('home') }}";
+            }
+            
+            function getChosenTransport_URL() {
+                return "{{ route('chosentransport') }}";
+            }
+
             function getAPI_URL() {
                 return "{{ route('api') }}";
+            }
+
+            function getHome_URL() {
+                return "{{ route('home') }}";
             }
 
             function getSVGFolder() {
@@ -179,6 +191,14 @@
 
             function getWeatherType() {
                 return "{{ $weatherData['iconName'] }}";
+            }
+
+            function getUserID() {
+                return {{ get_user_data('id', 'undefined') }};
+            }
+
+            function getCSRF_Token() {
+                return "{{ csrf_token() }}";
             }
 
             // User Data
