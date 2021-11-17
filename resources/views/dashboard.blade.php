@@ -29,7 +29,7 @@
             <div class="col-md-7">
             @include('pages.history.history')	
             </div>
-
+ 
         </div>
         
         <div class="row">  
@@ -45,6 +45,7 @@
 
         </div>
     </div>
+    
     
 </x-app-layout>
 
