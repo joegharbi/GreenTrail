@@ -2,9 +2,8 @@
 
 <!-- CSS -->
 <!-- Theme style -->
-<link rel="stylesheet" href="{{asset('css/AdminLTE.css')}}">
-<!-- <link rel="stylesheet" href="{{asset('css/bootstrap/bootstrap.css')}}"> -->
-<!-- <link rel="stylesheet" href="{{asset('css/bootstrap/bootstrap.min.css')}}"> -->
+{{--<!-- <link rel="stylesheet" href="{{asset('css/bootstrap/bootstrap.css')}}"> -->--}}
+{{--<!-- <link rel="stylesheet" href="{{asset('css/bootstrap/bootstrap.min.css')}}"> -->--}}
 
 <!-- fullCalendar 2.2.5-->
 <link rel="stylesheet" href="{{asset('css/fullcalendar/fullcalendar.min.css')}}">
@@ -100,11 +99,11 @@ $(function () {
 			}
 		}
 		/*,
-		
+
 		eventMouseover: function(calEvent, jsEvent) {
 			var tooltip = '<div class="tooltipevent" style="width:100px;height:100px;background:#ccc;position:absolute;z-index:10001;">' + calEvent.title + '</div>';
 			var $tootlip = $(tooltip).appendTo('body');
-		
+
 			$(this).mouseover(function(e) {
 				$(this).css('z-index', 10000);
 				$tooltip.fadeIn('500');

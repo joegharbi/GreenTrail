@@ -1,8 +1,8 @@
 <!-- CSS -->
 <!-- Theme style -->
-<link rel="stylesheet" href="{{asset('css/AdminLTE.css')}}">
-<!-- <link rel="stylesheet" href="{{asset('css/bootstrap/bootstrap.css')}}">
-<link rel="stylesheet" href="{{asset('css/bootstrap/bootstrap.min.css')}}"> -->
+{{--<link rel="stylesheet" href="{{asset('css/AdminLTE.css')}}">--}}
+{{--<!-- <link rel="stylesheet" href="{{asset('css/bootstrap/bootstrap.css')}}">--}}
+{{--<link rel="stylesheet" href="{{asset('css/bootstrap/bootstrap.min.css')}}"> -->--}}
 
 <style>
     .label{
@@ -39,7 +39,7 @@
 
 
 <div class="container">
-        
+
     <div class="col-md-12">
         <div class="box box-primary">
             <div class="box-header with-border">
@@ -61,22 +61,22 @@
                     $idx = 1;
                 @endphp
                 @foreach($histories as $history)
-                
+
                     @php
                     $stat = '';
                     $stat = 'warning';
                     // $stat = 'success';
                     // $stat = 'danger';
                     @endphp
-                    
+
                     <tr>
                         <td>@php echo $idx; @endphp</td>
                         <td>{{ $history->source }}</td>
                         <td>{{ $history->destination }}</td>
-                        <td>{{ $history->chosen_transportation }}</td>        
-                        <td>{{ $history->reduced_emission }}</td>              
+                        <td>{{ $history->chosen_transportation }}</td>
+                        <td>{{ $history->reduced_emission }}</td>
                         <td>{{ $history->created_at }}</td>
-                    
+
                     </tr>
                     @php
                         $idx++;
@@ -88,7 +88,7 @@
 
             <!-- /.box-body -->
             <div class="box-footer clearfix">
-            
+
             </div>
         </div>
     <!-- /.box -->

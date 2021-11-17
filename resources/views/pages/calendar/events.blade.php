@@ -1,6 +1,6 @@
 <!-- CSS -->
 <!-- Theme style -->
-<link rel="stylesheet" href="{{asset('css/AdminLTE.css')}}">
+{{--<link rel="stylesheet" href="{{asset('css/AdminLTE.css')}}">--}}
 <!-- <link rel="stylesheet" href="{{asset('css/bootstrap/bootstrap.css')}}">
 <link rel="stylesheet" href="{{asset('css/bootstrap/bootstrap.min.css')}}"> -->
 
@@ -38,7 +38,7 @@
 </style>
 
 <div class="container">
-        
+
     <div class="col-md-12">
         <div class="box box-primary">
             <div class="box-header with-border">
@@ -55,32 +55,32 @@
                 <th>Schedule Date</th>
                 <th style="width: 100px">Status</th>
                 <th >Action</th>
-                
+
                 </tr>
 
                 @php
                     $idx = 1;
                 @endphp
                 @foreach($calendars as $calendar)
-                
+
                     @php
                     $stat = '';
                     $stat = 'warning';
                     // $stat = 'success';
                     // $stat = 'danger';
                     @endphp
-                    
+
                     <tr>
                         <td>@php echo $idx; @endphp</td>
                         <td>{{ $calendar->source }}</td>
                         <td>{{ $calendar->destination }}</td>
-                        <td>{{ $calendar->comments }}</td>                    
+                        <td>{{ $calendar->comments }}</td>
                         <td>{{ $calendar->rdate }}</td>
                         <td><span class="label label-warning">PENDING</span></td>
                         <td>
                             <a href="javascript:deleteEvent({{ $calendar->id }});"><button class="deleteButton">-</button></a>
                         </td>
-                    
+
                     </tr>
                     @php
                         $idx++;
@@ -92,7 +92,7 @@
 
             <!-- /.box-body -->
             <div class="box-footer clearfix">
-            
+
             </div>
         </div>
     <!-- /.box -->

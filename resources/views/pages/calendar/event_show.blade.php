@@ -8,7 +8,7 @@
     <!-- write code here -->
 
     @section('title', 'Calendar')
-    
+
     @include('pages.calendar.events')
-    
+
 </x-app-layout>

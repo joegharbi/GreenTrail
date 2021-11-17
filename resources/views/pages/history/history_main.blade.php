@@ -8,7 +8,7 @@
     <!-- write code here -->
 
     @section('title', 'History')
-    
+
     @include('pages.history.history')
-    
+
 </x-app-layout>

@@ -21,10 +21,10 @@
 
         <!-- including the calendar form -->
         <div class="col-md-4">
-          @include('pages.calendar.event_form')	
+          @include('pages.calendar.event_form')
         </div>
 
       </div>
     </div>
-    
+
 </x-app-layout>

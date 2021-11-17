@@ -8,17 +8,16 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-               <span class="-ml-px">
-                   <h6><a class="nav-link active text-white" aria-current="page" href="/">Home</a></h6>
-               </span>
+                <a class="nav-link text-white h5" href="/">Home</a>
                 <a class="nav-link text-white" href="{{route('about-us')}}">About</a>
                 <a class="nav-link text-white" href="{{route('contact')}}">Contact</a>
-                <a class="nav-link text-white" href="{{route('calendar_dashboard')}}">Calendar</a>
             </div>
         </div>
         @if (Route::has('login'))
                 @auth
-                    <a href="{{ url('history') }}" class="btn btn-primary">History</a>
+                <a class="btn m-2 btn-secondary" href="{{route('calendar_dashboard')}}">Calendar</a>
+
+                <a href="{{ url('history') }}" class="btn btn-primary">History</a>
                 <a href="{{ route('dashboard')}}" class="btn btn-dark m-2">Dashboard</a>
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
