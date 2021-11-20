@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 19, 2021 at 05:02 PM
+-- Generation Time: Nov 19, 2021 at 10:42 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.4.9
 
@@ -33,8 +33,13 @@ CREATE TABLE IF NOT EXISTS `calendars` (
   `user_id` int(10) UNSIGNED NOT NULL,
   `source` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `destination` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `longitude` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `latitude` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `from_lat` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `from_lng` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `to_lat` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `to_lng` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `state` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
+  `chosen_transportation` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `reduced_emission` int(11) NOT NULL DEFAULT '0',
   `rdate` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `comments` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,

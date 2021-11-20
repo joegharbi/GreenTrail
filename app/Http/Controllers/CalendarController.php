@@ -61,6 +61,10 @@ class CalendarController extends Controller
         $u_id = Auth::user()->id;
         $source  = $request->source;
         $destination  = $request->destination;
+        $from_lat = $request->from_lat;
+        $from_lng = $request->from_lng;
+        $to_lat = $request->to_lat;
+        $to_lng = $request->to_lng;
         $comment = $request->comment;
         $rdate  = $request->rdate;
         $rtime  = $request->rtime;
@@ -69,6 +73,10 @@ class CalendarController extends Controller
         $calendar->user_id = $u_id;
         $calendar->source = $source;
         $calendar->destination = $destination;
+        $calendar->from_lat = $from_lat;
+        $calendar->from_lng = $from_lng;
+        $calendar->to_lat = $to_lat;
+        $calendar->to_lng = $to_lng;
         $calendar->comments = $comment;
         $calendar->rdate = $sch_date;
         
