@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-link text-white h5" href="/">Home</a>
-                <a class="nav-link text-white" href="{{route('about-us')}}">About</a>
+                <a class="nav-link text-white" href="{{route('about-us')}}">About Us</a>
                 <a class="nav-link text-white" href="{{route('contact')}}">Contact</a>
             </div>
         </div>
