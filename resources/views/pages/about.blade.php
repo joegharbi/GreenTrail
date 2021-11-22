@@ -60,13 +60,13 @@
       <hr class="d-sm-none">
     </div>
     <div class="col-sm-8">
-      <h2>Our Mession </h2>
+      <h2>Our Mission </h2>
       {{-- <h5> Dec 12, 2021</h5> --}}
       <div class="fakeimg row">According to  increaseing of air pollution, high values of CO2 in the air, it contribute to global warming and climate changes by trapping heat</div>
       <p>We Introduce our solution through our product  website which is free to use .</p>
       <p>Welcome to GreenTrail. Our web app is built with the main goal of reducing our CO2 footprint. It helps you choose your best and suitable way of transport based on some factors like weather and traffic data.</p>
 
-      <h2 class="mt-5">Our Vition</h2>
+      <h2 class="mt-5">Our Vision</h2>
       {{-- <h5> Dec 12, 2021</h5> --}}
       <div class="fakeimg row">application that will help the person to choose the more environmental friendly way of transportation depending on some factors 
         (traffic, weather conditions) and recommending him/her with the best transportation tool to use </div>

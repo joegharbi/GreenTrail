@@ -6,8 +6,9 @@ const fromLoc = {
 const n = urlParams.get('n');
 
 
-initMap(main);
-
+if (stations.length != 0) {
+    initMap(main);
+}
 
 function main() {
     addMarker(fromLoc);

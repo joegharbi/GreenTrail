@@ -79,6 +79,7 @@
             return geoLocDistance($startLoc, $a) - geoLocDistance($startLoc, $b);
         });
         $bubiStations = array_slice($bubiStations, 0, $n);
+        $found = geoLocDistance($startLoc, $bubiStations[0]) <= floatval(get_user_data('maxBikeDistance', 4000));
     } else {
         array_push($errorlist, "Cannot locate MOL Bubi stations");
     }
@@ -107,8 +108,14 @@
             <div class="col-12 p-0 my-bg rounded mt-2">
                 <div class="h2 pt-2 text-center">Nearby MOL Bubi stations</div>
                 <div class="m-2">
-                    <div id="map" class="p-2 w-100" style="height: 600px">
-                    </div>
+                    @if ($found)
+                        <div id="map" class="p-2 w-100" style="height: 600px">
+                        </div>
+                    @else
+                        <p class="text-danger">
+                            No nearby MOL Bubi station found!
+                        </p>
+                    @endif
                 </div>
                 <div class="text-center mb-2">
                     <button type="button" class="btn btn-success" onclick="redirectHome()">Got it!</button>
@@ -132,7 +139,12 @@
                 return "{{ route('api') }}";
             }
 
-            const stations = <?php echo json_encode($bubiStations) ?>;
+            const stations = <?php
+                if ($found) {
+                    echo json_encode($bubiStations);
+                } else {
+                    echo '[]';
+                } ?>;
         </script>
         <script type="text/javascript" src="{{ asset('/js/map.js') }}"></script>
         <script type="text/javascript" src="{{ asset('/js/bubi.js') }}"></script>

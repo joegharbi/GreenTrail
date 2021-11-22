@@ -125,6 +125,7 @@ function vehicleReady() {
 
 
 function suggest() {
+    console.log(vehicles);
     let order = [vehicles.car];
     if (vehicles.pt.available &&
         (trafficStateInd > 2 || // high or very high
