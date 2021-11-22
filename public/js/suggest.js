@@ -202,15 +202,21 @@ function onTransportChoose(vehicle, emissionReductionKG) {
             }
         })
             .then(response => { return response.text(); })
-            .then(response => { ckeckDBResponse(response); })
+            .then(response => { ckeckDBResponse(response, vehicle == 'Bike'); })
             .catch(error => alert(error.message));
+    } else {
+        ckeckDBResponse('No logged in user', vehicle == 'Bike');
     }
 }
 
 
-function ckeckDBResponse(response) {
+function ckeckDBResponse(response, isBike) {
     console.log(response);
-    window.location.href = getHome_URL();
+    if (isBike) {
+        window.location.href = `${getHome_URL()}/bubi?lat=${fromLoc.lat}&lng=${fromLoc.lng}&n=8`;
+    } else {
+        window.location.href = getHome_URL();
+    }
 }
 
 

@@ -42,6 +42,14 @@ Route::get('/suggest', function (Request $request) {
     ]);
 })->name("suggest");
 
+Route::get('/bubi', function (Request $request) {
+    return view('pages.bubi',[
+        'lat' => $request->input('lat') ?? null,
+        'lng' => $request->input('lng') ?? null,
+        'n' => $request->input('n') ?? null
+    ]);
+})->name("bubi");
+
 Route::get('/about-us', function () {
     return view('pages.about',[
     'page_name' => 'About us page',

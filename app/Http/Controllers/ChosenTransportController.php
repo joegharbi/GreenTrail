@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\History;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class ChosenTransportController extends Controller
 {
@@ -15,7 +16,8 @@ class ChosenTransportController extends Controller
             'source' => $post->input('source'),
             'destination' => $post->input('destination'),
             'chosen_transportation' => $post->input('chosen_transportation'),
-            'reduced_emission' => $post->input('reduced_emission')
+            'reduced_emission' => $post->input('reduced_emission'),
+            'created_at' => Carbon::now()->toDateTimeString()
         ]);
     }
 }

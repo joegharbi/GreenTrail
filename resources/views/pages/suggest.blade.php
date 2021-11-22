@@ -181,10 +181,6 @@
                 return "{{ route('api') }}";
             }
 
-            function getHome_URL() {
-                return "{{ route('home') }}";
-            }
-
             function getSVGFolder() {
                 return "{{ asset('/svg') }}";
             }

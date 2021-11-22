@@ -42,8 +42,14 @@ function intiMapWithAPIKey(api_key, mainFunc) {
 }
 
 
-function addMarker(loc) {
-    let marker = new H.map.Marker(loc);
+function addMarker(loc, markerIconPath = undefined) {
+    let marker;
+    if (markerIconPath != undefined) {
+        let markerIcon = new H.map.Icon(markerIconPath, {size: {w: 40, h: 40}});
+        marker = new H.map.Marker(loc, { icon: markerIcon });
+    } else {
+        marker = new H.map.Marker(loc);
+    }
     markerGroup.addObject(marker);
     map.getViewModel().setLookAtData({
         bounds: extendBoundingBox(markerGroup.getBoundingBox())
