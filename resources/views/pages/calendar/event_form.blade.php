@@ -11,25 +11,43 @@
   </div>
   <!-- /.box-header -->
   <!-- form start -->
-  <form role="form" action="{{ url('/calendar/post_schedule') }}" method="post">
+  <form role="form" action="{{ url('/calendar/post_schedule') }}" method="GET" onsubmit="return beforeSubmit()">
     @csrf <!-- {{ csrf_field() }} -->
     <div class="box-body">
       
     <div class="form-group">
         <div class="row">
             <div class="col-xs-6">
-                <label>Source</label>
-                <span id="sprytf_source">
-                <input type="text" name="source" class="form-control" placeholder="Source">
-                <span class="textfieldRequiredMsg">Source is required</span>
-                </span>
+              <!-- <div class="col-11">
+                      <input type="text" class="form-control" id="from" onkeydown="onInputEnter('from')" onfocusout="onFocusOut('from')">
+              </div>
+              <div class="col-1 d-grid gap-2">
+                  <button id="gps" class="btn btn-success btn-lg p-1" onclick="useGPS()">
+                      <img src="{{ asset('/svg/gps.svg') }}" />
+                  </button>
+              </div> -->
+              <label>Source</label>
+              <span id="sprytf_source">
+              <input type="text" name="source" class="form-control" placeholder="Source" id="from" onkeydown="onInputEnter('from')" onfocusout="onFocusOut('from')">
+              <span class="textfieldRequiredMsg">Source is required</span>
+              </span>
+              <input type="hidden" id="from_lat" name="from_lat" value="">
+              <input type="hidden" id="from_lng" name="from_lng" value="">
             </div>
             <div class="col-xs-6">
-                <label>Destination</label>
-                <span id="sprytf_destination">
-                <input type="text" name="destination" class="form-control" placeholder="Destination">
-                <span class="textfieldRequiredMsg">Destination is required.</span>
-                </span>
+              <!-- <div class="mb-3">
+              <label for="destination" class="form-label">
+                  <h5>Destination</h5>
+              </label>
+              <input type="text" class="form-control" id="to" onkeydown="onInputEnter('to')" onfocusout="onFocusOut('to')">
+              </div> -->
+              <label>Destination</label>
+              <span id="sprytf_destination">
+              <input type="text" name="destination" class="form-control" placeholder="Destination" id="to" onkeydown="onInputEnter('to')" onfocusout="onFocusOut('to')">
+              <span class="textfieldRequiredMsg">Destination is required.</span>
+              </span>
+              <input type="hidden" id="to_lat" name="to_lat" value="">
+              <input type="hidden" id="to_lng" name="to_lng" value="">
             </div>
         </div>
 	  </div>
@@ -67,7 +85,7 @@
 
     <!-- /.box-body -->
     <div class="box-footer">
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="" class="btn btn-primary" id="go" disabled>Submit</button>
       
       <button type="button" class="btn btn-secondary"><a href="{{ url('/calendar/schedules') }}" style="color: white;text-decoration: none;">List Schedules</a></button>
     </div>
@@ -84,3 +102,15 @@ var sprytf_destination 	= new Spry.Widget.ValidationTextField("sprytf_destinatio
 
 //-->
 </script>
+
+<!-- for the locations autocomplete and parameters -->
+<script type="text/javascript">
+    function getSuggest_URL() {
+        return "{{ route('suggest') }}";
+    }
+    
+    function getAPI_URL() {
+        return "{{ route('api') }}";
+    }
+</script>
+<script type="text/javascript" src="{{ asset('/js/search_for_calendar.js') }}"></script>

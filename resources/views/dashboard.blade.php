@@ -15,7 +15,6 @@
         }
     </style>
     <!-- JS -->
-    <script src="{{asset('js/jQuery/jQuery-2.1.4.min.js')}}"></script>
 
     <div class="container">
         <div class="row frst_row">
@@ -48,4 +47,5 @@
     
     
 </x-app-layout>
+<script src="{{asset('js/jQuery/jQuery-2.1.4.min.js')}}"></script>
 

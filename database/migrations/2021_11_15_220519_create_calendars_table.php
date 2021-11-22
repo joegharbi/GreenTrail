@@ -16,20 +16,15 @@ class CreateCalendarsTable extends Migration
         Schema::create('calendars', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->unsigned();
-            $table->string('source', 255)->nullable();
-            $table->string('destination', 255)->nullable();
-            $table->string('from_lat', 255)->nullable();
-            $table->string('from_lng', 255)->nullable();
-            $table->string('to_lat', 255)->nullable();
-            $table->string('to_lng', 255)->nullable();
-            $table->string('state', 255)->default('pending');
-            $table->string('chosen_transportation', 255)->nullable();
-            $table->integer('reduced_emission')->default(0);
+            $table->string('source', 255)->nullable();;
+            $table->string('destination', 255)->nullable();;
+            $table->string('longitude', 255)->nullable();;
+            $table->string('latitude', 255)->nullable();;
             $table->string('rdate', 255);
             $table->string('comments', 255);
             $table->timestamps();
-            
             $table->foreign('user_id')->references('id')->on('users');
+
         });
     }
 
@@ -43,3 +38,4 @@ class CreateCalendarsTable extends Migration
         Schema::dropIfExists('calendars');
     }
 }
+

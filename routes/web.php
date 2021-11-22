@@ -121,7 +121,7 @@ Route::view('calendar', 'pages/calendar/calendar_dashboard',[
 ])->name("calendar_dashboard");
 
 Route::post('/calendar/post', 'App\Http\Controllers\CalendarController@viewDates');
-Route::post('/calendar/post_schedule', 'App\Http\Controllers\CalendarController@saveDates');
+Route::get('/calendar/post_schedule', 'App\Http\Controllers\CalendarController@saveDates');
 Route::get('/calendar/schedules', 'App\Http\Controllers\CalendarController@viewSchedules');
 Route::get('/calendar/schedules/delete/{id}', 'App\Http\Controllers\CalendarController@deleteSchedule');
 
