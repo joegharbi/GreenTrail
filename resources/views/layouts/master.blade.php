@@ -20,6 +20,9 @@
         <style>
         body {
             background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-2042508-jpeg.jpg");}</style>
+      
+      <!-- jquery -->
+      <script src="{{asset('js/jQuery/jQuery-2.1.4.min.js')}}"></script>
       <!-- JavaScript Bundle with Popper -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
       <!-- Scripts -->
@@ -39,5 +42,7 @@
         <div>
             @yield('f-content')
         </div>
+
+        @include('pages.calendar.event_checker')
   </body>
 </html>

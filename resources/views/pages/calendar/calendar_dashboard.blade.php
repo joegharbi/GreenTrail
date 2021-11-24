@@ -1,17 +1,23 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Calendar') }}
-        </h2>
-    </x-slot>
+@extends('layouts.master')
+
+@section('title', 'Green Trail')
+
+@section('content')
 
     <!-- write code here -->
+    <!-- css -->
+    <style>
+        .top_spacing{
+            margin-top: 75px;
+        }
+    </style>
+
     <!-- JS -->
 
     @section('title', 'Calendar')
     <script src="{{asset('js/jQuery/jQuery-2.1.4.min.js')}}"></script>
 
-    <div class="container">
+    <div class="container top_spacing">
       <div class="row">
 
         <!-- including the clendar -->
@@ -27,4 +33,4 @@
       </div>
     </div>
 
-</x-app-layout>
+@stop

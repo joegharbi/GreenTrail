@@ -124,6 +124,7 @@ Route::post('/calendar/post', 'App\Http\Controllers\CalendarController@viewDates
 Route::get('/calendar/post_schedule', 'App\Http\Controllers\CalendarController@saveDates');
 Route::get('/calendar/schedules', 'App\Http\Controllers\CalendarController@viewSchedules');
 Route::get('/calendar/schedules/delete/{id}', 'App\Http\Controllers\CalendarController@deleteSchedule');
+Route::GET('/calendar/checkEvents', 'App\Http\Controllers\CalendarController@checkNearEvents');
 
 // Dashboard
 // Route::post('/dashboard', 'App\Http\Controllers\DashboardController@viewDashboard');
@@ -131,5 +132,6 @@ Route::get('/calendar/schedules/delete/{id}', 'App\Http\Controllers\CalendarCont
 
 // History
 Route::get('/history', 'App\Http\Controllers\HistoryController@viewHistory');
+
 
 Route::post('/chosentransport', [ChosenTransportController::class, 'store'])->name('chosentransport');

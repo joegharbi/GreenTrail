@@ -1,14 +1,23 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Schedules') }}
-        </h2>
-    </x-slot>
+@extends('layouts.master')
+
+@section('title', 'Green Trail')
+
+@section('content')
 
     <!-- write code here -->
 
+    <!-- css -->
+    <style>
+        .top_spacing{
+            margin-top: 75px;
+        }
+    </style>
+
     @section('title', 'Calendar')
 
-    @include('pages.calendar.events')
+    <div class="container top_spacing">
+        @include('pages.calendar.events')
+    </div>
+    
 
-</x-app-layout>
+@stop

@@ -1,10 +1,13 @@
 <!-- CSS -->
 <!-- Theme style -->
-{{--<link rel="stylesheet" href="{{asset('css/AdminLTE.css')}}">--}}
-{{--<!-- <link rel="stylesheet" href="{{asset('css/bootstrap/bootstrap.css')}}">--}}
-{{--<link rel="stylesheet" href="{{asset('css/bootstrap/bootstrap.min.css')}}"> -->--}}
+<link rel="stylesheet" href="{{asset('css/AdminLTE.css')}}">
+<!-- <link rel="stylesheet" href="{{asset('css/bootstrap/bootstrap.css')}}">  -->
+<!-- <link rel="stylesheet" href="{{asset('css/bootstrap/bootstrap.min.css')}}"> -->
 
 <style>
+    .top_spacing{
+        margin-top: 75px;
+    }
     .label{
         padding: 2%;
     }
@@ -32,13 +35,17 @@
         border-radius: 10%;
     }
 
-    .table tr:first-child{
+    /* .table tr {
+        text-align: left;
+    } */
+    .table thead tr:first-child{
         background-color: #d1f0d1;
+        text-align: center;
     }
 </style>
 
 
-<div class="container">
+<div class="">
 
     <div class="col-md-12">
         <div class="box box-primary">
@@ -46,43 +53,45 @@
             <h3 class="box-title">History Details</h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
+            <div class="box-body table-responsive">
             <table class="table table-bordered">
-                <tr>
-                <th style="width: 10px">#</th>
-                <th>Source</th>
-                <th>Destination</th>
-                <th>Chosen Transportation</th>
-                <th>Reduced Emission</th>
-                <th>Date</th>
-                </tr>
-
-                @php
-                    $idx = 1;
-                @endphp
-                @foreach($histories as $history)
-
-                    @php
-                    $stat = '';
-                    $stat = 'warning';
-                    // $stat = 'success';
-                    // $stat = 'danger';
-                    @endphp
-
+                <thead>
                     <tr>
-                        <td>@php echo $idx; @endphp</td>
-                        <td>{{ $history->source }}</td>
-                        <td>{{ $history->destination }}</td>
-                        <td>{{ $history->chosen_transportation }}</td>
-                        <td>{{ $history->reduced_emission }}</td>
-                        <td>{{ $history->created_at }}</td>
-
+                    <th style="width: 10px">#</th>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <th>Chosen Transportation</th>
+                    <th>Reduced Emission</th>
+                    <th>Date</th>
                     </tr>
+                </thead>
+                <tbody>
                     @php
-                        $idx++;
+                        $idx = 1;
                     @endphp
-                @endforeach
+                    @foreach($histories as $history)
 
+                        @php
+                        $stat = '';
+                        $stat = 'warning';
+                        // $stat = 'success';
+                        // $stat = 'danger';
+                        @endphp
+
+                        <tr>
+                            <td>@php echo $idx; @endphp</td>
+                            <td>{{ $history->source }}</td>
+                            <td>{{ $history->destination }}</td>
+                            <td>{{ $history->chosen_transportation }}</td>
+                            <td>{{ $history->reduced_emission }}</td>
+                            <td>{{ $history->created_at }}</td>
+
+                        </tr>
+                        @php
+                            $idx++;
+                        @endphp
+                    @endforeach
+                </tbody>
             </table>
             </div>
 

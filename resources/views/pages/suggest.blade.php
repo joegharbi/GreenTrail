@@ -9,6 +9,14 @@
     Try with:
     /suggest?from_lat=47.49632&from_lng=19.06963&to_lat=47.49736&to_lng=19.05445
     */
+   
+    function get_event_id(){
+        if(isset($_GET['id'])){
+            return $_GET['id'];
+        }else{
+            return 0;
+        }
+    }
 
     function get_user_data($field, $default) {
         if (Auth::user() && isset(Auth::user()[$field])) {
@@ -191,6 +199,10 @@
 
             function getUserID() {
                 return {{ get_user_data('id', 'undefined') }};
+            }
+
+            function getEventID() {
+                return {{ get_event_id() }};
             }
 
             function getCSRF_Token() {

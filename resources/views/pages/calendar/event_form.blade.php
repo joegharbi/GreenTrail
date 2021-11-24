@@ -85,7 +85,7 @@
 
     <!-- /.box-body -->
     <div class="box-footer">
-      <button type="" class="btn btn-primary" id="go" disabled>Submit</button>
+      <button type="" class="btn btn-success" id="go" disabled>Submit</button>
       
       <button type="button" class="btn btn-secondary"><a href="{{ url('/calendar/schedules') }}" style="color: white;text-decoration: none;">List Schedules</a></button>
     </div>
