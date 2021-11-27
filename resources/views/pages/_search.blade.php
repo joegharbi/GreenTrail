@@ -9,12 +9,12 @@
                 <h5>Source</h5>
             </label>
             <div class="row p-0">
-                <div class="col-11">
+                <div class="col-10 col-md-11">
                     <input type="text" class="form-control" id="from" onkeydown="onInputEnter('from')" onfocusout="onFocusOut('from')">
                 </div>
-                <div class="col-1 d-grid gap-2">
+                <div class="col-2 col-md-1 d-grid gap-2">
                     <button id="gps" class="btn btn-success btn-lg p-1" onclick="useGPS()">
-                        <img src="{{ asset('/svg/gps.svg') }}" />
+                        <img src="{{ asset('/svg/gps.svg') }}" class="mx-auto d-block" />
                     </button>
                 </div>
             </div>

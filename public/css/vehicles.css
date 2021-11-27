@@ -1,0 +1,23 @@
+.bg-light-gray {
+    background: #EEEEEE;
+}
+
+.car-box {
+    border: 3px solid #D94452;
+    background: #F76D82;
+}
+
+.pt-box {
+    border: 3px solid #35BB9B;
+    background: #62DDBD;
+}
+
+.bike-box {
+    border: 3px solid #4B89DA;
+    background: #73B1F4;
+}
+
+.walk-box {
+    border: 3px solid #967ADA;
+    background: #B3A5EF;
+}

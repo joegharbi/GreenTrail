@@ -70,7 +70,7 @@
     evaluate_param($errorlist, $n, 0, 100, "n");
 
     $bubiStations = get_bubi_stations();
-    if (isset($bubiStations)) {
+    if (empty($errorlist) && isset($bubiStations)) {
         $startLoc = [
             'lat' => $lat,
             'lon' => $lng
@@ -98,14 +98,9 @@
     }
 
     ?>
-    <style>
-        .my-bg {
-            background: #EEEEEE;
-        }
-    </style>
     @if (empty($errorlist))
-        <div class="row p-0">
-            <div class="col-12 p-0 my-bg rounded mt-2">
+        <div class="row p-2">
+            <div class="col-12 p-0 bg-light-gray rounded mt-2">
                 <div class="h2 pt-2 text-center">Nearby MOL Bubi stations</div>
                 <div class="m-2">
                     @if ($found)
@@ -150,7 +145,7 @@
         <script type="text/javascript" src="{{ asset('/js/bubi.js') }}"></script>
     @else
         <div class="row p-0">
-            <div class="col-md-12 p-2 m-2 rounded my-bg text-danger">
+            <div class="col-md-12 p-2 m-2 rounded bg-light-gray text-danger">
                 <h1 class="text-center">Some error occured!</h1>
                 <ul>
                     @foreach ($errorlist as $error)

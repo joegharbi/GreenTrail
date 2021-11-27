@@ -94,35 +94,11 @@
         $toPlaceName = check_response($errorlist, send_revgeoloc_request($to_lat, $to_lng), "Cannot get destination location");
     }
     ?>
-    <style>
-        .my-bg {
-            background: #EEEEEE;
-        }
-
-        .car-box {
-            border: 3px solid #D94452;
-            background: #F76D82;
-        }
-
-        .pt-box {
-            border: 3px solid #35BB9B;
-            background: #62DDBD;
-        }
-
-        .bike-box {
-            border: 3px solid #4B89DA;
-            background: #73B1F4;
-        }
-
-        .walk-box {
-            border: 3px solid #967ADA;
-            background: #B3A5EF;
-        }
-    </style>
+    
     @if (empty($errorlist))
         <div class="row p-0">
             <div class="col-md-6 col-sm-12 p-0">
-                <div class="rounded my-bg m-2">
+                <div class="rounded bg-light-gray m-2">
                     <div class="row m-2">
                         <div class="col-2 col-md-3 col-lg-2 p-2">From:</div>
                         <div class="col-10 col-md-9 col-lg-10 mt-1 mb-1 pt-1 pb-1 rounded bg-light" id="from"><?=$fromPlaceName?></div>
@@ -132,7 +108,7 @@
                         <div class="col-10 col-md-9 col-lg-10 mt-1 mb-1 pt-1 pb-1 rounded bg-light" id="to"><?=$toPlaceName?></div>
                     </div>
                 </div>
-                <div class="rounded my-bg m-2">
+                <div class="rounded bg-light-gray m-2">
                     <div class="row m-2 align-items-center">
                         <div class="col-2 p-0 m-0">
                             <img src="{{ $weatherData['iconLink'] }}"/>
@@ -145,7 +121,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="rounded my-bg m-2">
+                <div class="rounded bg-light-gray m-2">
                     <div class="row m-2 align-items-center">
                         <div class="col-2 p-2 m-0">
                             <img src="{{ asset('/svg/traffic.svg') }}" />
@@ -154,11 +130,11 @@
                         <div class="col-6 p-2"><b id="trafficState"></b></div>
                     </div>
                 </div>
-                <div class="rounded my-bg m-2 p-1" id="suggestionTable">
+                <div class="rounded bg-light-gray m-2 p-1" id="suggestionTable">
                 </div>
             </div>
             <div class="col-md-6 col-sm-12 p-0">
-                <div class="rounded my-bg m-2 h-100">
+                <div class="rounded bg-light-gray m-2 h-100">
                     <div id="map" class="p-2 w-100" style="height: 600px">
                     </div>
                 </div>
@@ -207,7 +183,7 @@
         <script type="text/javascript" src="{{ asset('/js/suggest.js') }}"></script>
     @else
         <div class="row p-0">
-            <div class="col-md-12 p-2 m-2 rounded my-bg text-danger">
+            <div class="col-md-12 p-2 m-2 rounded bg-light-gray text-danger">
                 <h1 class="text-center">Some error occured!</h1>
                 <ul>
                     @foreach ($errorlist as $error)
