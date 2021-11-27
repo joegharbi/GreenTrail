@@ -624,7 +624,7 @@ a:focus {
   .sidebar-mini.sidebar-collapse .sidebar-menu > li > a > .pull-right,
   .sidebar-mini.sidebar-collapse .sidebar-menu li.header {
     display: none!important;
-    -webkit-transform: translateZ(0);
+    
   }
   .sidebar-mini.sidebar-collapse .main-header .logo {
     width: 50px;
@@ -1514,7 +1514,7 @@ a:focus {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 .box.box-primary {
-  border-top-color: #3c8dbc;
+  border-top-color: #198754;
 }
 .box.box-info {
   border-top-color: #00c0ef;

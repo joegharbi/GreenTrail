@@ -186,6 +186,7 @@ function displayTitle(title) {
 
 function onTransportChoose(vehicle, emissionReductionKG) {
     let userID = getUserID();
+    let eventID = getEventID();
     if (userID) {
         fetch(getChosenTransport_URL(), {
             method: 'post',
@@ -195,7 +196,8 @@ function onTransportChoose(vehicle, emissionReductionKG) {
                     source: document.getElementById('from').innerText,
                     destination: document.getElementById('to').innerText,
                     chosen_transportation: vehicle,
-                    reduced_emission: Math.round(emissionReductionKG * 1000)
+                    reduced_emission: Math.round(emissionReductionKG * 1000),
+                    event_id: eventID,
             }),
             headers: {
                 'X-CSRF-TOKEN': getCSRF_Token(),

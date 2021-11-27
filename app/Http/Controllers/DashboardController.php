@@ -14,7 +14,9 @@ class DashboardController extends Controller
         
         $u_id = Auth::user()->id;
         $calendars = \App\Models\Calendar::where('user_id', $u_id)
-                                        ->where('rdate', '>=', DB::raw('curdate()'))
+                                        ->where('rdate', '>=', DB::raw('CURRENT_TIMESTAMP()'))
+                                        ->orderBy('rdate', 'ASC')
+                                        ->take(10)
                                         ->get();
         
         $histories = \App\Models\History::where('user_id', $u_id)

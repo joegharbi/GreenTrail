@@ -1,3 +1,7 @@
+@php
+    date_default_timezone_set('Europe/Budapest');   
+@endphp
+
 <!-- CSS -->
 <!-- Theme style -->
 {{--<link rel="stylesheet" href="{{asset('css/AdminLTE.css')}}">--}}
@@ -32,12 +36,12 @@
         border-radius: 10%;
     }
 
-    .table tr:first-child{
+    .table thead tr:first-child{
         background-color: #d1f0d1;
     }
 </style>
 
-<div class="container">
+<div class="">
 
     <div class="col-md-12">
         <div class="box box-primary">
@@ -45,48 +49,81 @@
             <h3 class="box-title">Schedules Details</h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
+            <div class="box-body table-responsive">
             <table class="table table-bordered">
-                <tr>
-                <th style="width: 10px">#</th>
-                <th>Source</th>
-                <th>Destination</th>
-                <th>Comment</th>
-                <th>Schedule Date</th>
-                <th style="width: 100px">Status</th>
-                <th >Action</th>
-
-                </tr>
-
-                @php
-                    $idx = 1;
-                @endphp
-                @foreach($calendars as $calendar)
-
-                    @php
-                    $stat = '';
-                    $stat = 'warning';
-                    // $stat = 'success';
-                    // $stat = 'danger';
-                    @endphp
-
+                <thead>
                     <tr>
-                        <td>@php echo $idx; @endphp</td>
-                        <td>{{ $calendar->source }}</td>
-                        <td>{{ $calendar->destination }}</td>
-                        <td>{{ $calendar->comments }}</td>
-                        <td>{{ $calendar->rdate }}</td>
-                        <td><span class="label label-warning">PENDING</span></td>
-                        <td>
-                            <a href="javascript:deleteEvent({{ $calendar->id }});"><button class="deleteButton">-</button></a>
-                        </td>
+                    <th style="width: 10px">#</th>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <th>Comment</th>
+                    <th>Schedule Date</th>
+                    <th style="width: 100px">Status</th>
+                    <th>Suggested Transportation</th>
+                    <th>Reduced Emission</th>
+                    <th >Action</th>
 
                     </tr>
+                </thead>
+                <tbody>
                     @php
-                        $idx++;
+                        $idx = 1;
                     @endphp
-                @endforeach
+                    @foreach($calendars as $calendar)
 
+                        @php
+                        $stat = '';
+                        $stat = 'warning';
+                        // $stat = 'success';
+                        // $stat = 'danger';
+                        @endphp
+
+                        <tr>
+                            <td>@php echo $idx; @endphp</td>
+                            <td>{{ $calendar->source }}</td>
+                            <td>{{ $calendar->destination }}</td>
+                            <td>{{ $calendar->comments }}</td>
+                            <td>{{ $calendar->rdate }}</td>
+                            @php 
+                            $d1 = strtotime($calendar->rdate.":00");
+                            $d2 = strtotime(date("Y-m-d H:i:s", strtotime('+10 minutes')));
+
+                            $from_lat= $calendar->from_lat;
+                            $from_lng= $calendar->from_lng;
+                            $to_lat= $calendar->to_lat;
+                            $to_lng= $calendar->to_lng;
+                            $event_id= $calendar->id;
+
+                            $suggest_link = "/suggest?from_lat=$from_lat&from_lng=$from_lng&to_lat=$to_lat&to_lng=$to_lng&id=$event_id";
+                            if($d1<=$d2 && $calendar->state=="pending"){
+                                echo '<td>
+                                        <a href="'.$suggest_link.'">
+                                            <button type="button" class="btn btn-success btn-sm">ROUTE</button>                                        
+                                        </a>
+                                    </td>';
+                            }else if($d1<=$d2 && $calendar->state=="done"){
+                                echo '<td>
+                                        <button type="button" class="btn btn-info btn-sm" disabled style="color:white;">SUGGESTED</button>
+                                    </td>';
+                            }else{
+                                echo '<td>
+                                        <button type="button" class="btn btn-warning btn-sm" disabled>PENDING</button>
+                                    </td>';
+                            }
+                            @endphp
+                            
+                            <td>{{ $calendar->chosen_transportation == "" ? "---" : $calendar->chosen_transportation }}</td>
+                            <td>{{ $calendar->reduced_emission == 0 ? "---" : $calendar->reduced_emission }}</td>
+                            <td>
+                                <a href="javascript:deleteEvent({{ $calendar->id }});"><button class="deleteButton">-</button></a>
+                            </td>
+
+                        </tr>
+                        @php
+                            $idx++;
+                        @endphp
+                    @endforeach
+                </tbody>
             </table>
             </div>
 

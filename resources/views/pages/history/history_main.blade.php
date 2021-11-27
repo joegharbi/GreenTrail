@@ -1,14 +1,22 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('History') }}
-        </h2>
-    </x-slot>
+@extends('layouts.master')
+
+@section('title', 'Green Trail')
+
+@section('content')
 
     <!-- write code here -->
 
+    <!-- css -->
+    <style>
+        .top_spacing{
+            margin-top: 75px;
+        }
+    </style>
+
     @section('title', 'History')
 
-    @include('pages.history.history')
-
-</x-app-layout>
+    <div class="container top_spacing">
+        @include('pages.history.history')
+    </div>
+    
+@stop

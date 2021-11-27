@@ -68,8 +68,8 @@
 }
 
 .counter_div{
-    padding-left: 25%;
-    padding-top: 25%;
+    padding-left: 30%;
+    padding-top: 20%;
 }
 .counter.green .counter-content{ background: linear-gradient(to right,#b7d952,#429a13);}
 .counter.green .counter-content:before{ background:#429a13;}

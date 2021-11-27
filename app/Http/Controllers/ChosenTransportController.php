@@ -19,5 +19,17 @@ class ChosenTransportController extends Controller
             'reduced_emission' => $post->input('reduced_emission'),
             'created_at' => Carbon::now()->toDateTimeString()
         ]);
+
+        // update calendar if it was a suggestion from an event
+        $event_id = $post->input('event_id');
+        if( $event_id != 0){
+            DB::table('calendars')->where('id',$event_id)->update(array(
+                'state' => 'done',
+                'chosen_transportation' => $post->input('chosen_transportation'),
+                'reduced_emission' => $post->input('reduced_emission'),
+                'updated_at' => Carbon::now()->toDateTimeString()
+            ));
+        }
+        
     }
 }

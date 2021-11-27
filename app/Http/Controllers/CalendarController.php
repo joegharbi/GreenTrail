@@ -6,12 +6,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Route;
 use DB;
+use DateTime;
 
 class CalendarController extends Controller
 {
     // MK
     public function viewDates(Request $request)
     {
+        date_default_timezone_set('Europe/Budapest');
+
         $calendar_arr = array();
         $calendars_arr = array();
 
@@ -25,19 +28,33 @@ class CalendarController extends Controller
         $calendars = \App\Models\Calendar::where('user_id', $u_id)
                                         ->where('rdate', '>=', $start)
                                         ->where('rdate', '<=', $end)
+                                        ->orderBy('rdate', 'ASC')
+                                        // ->where('rdate', '>=', DB::raw('CURRENT_TIMESTAMP()'))
                                         ->get();
         
         //dd(DB::getQueryLog());
         //dd($calendars);
-
+        $dates = array();
         foreach($calendars as $calendar){
             $rdate = $calendar->rdate;
             $comments = $calendar->comments;
-
+            $state = $calendar->state;
             
             $calendar_arr['title'] = $comments;
             $calendar_arr['start'] = $rdate;
-            $bgClr = '#f39c12';//pending
+
+            $d1 = strtotime($rdate.":00");
+            $d2 = strtotime(date("Y-m-d H:i:s"));
+
+            $dates[]= $d1 .' - '.$calendar->id.' - '.  date("Y-m-d H:i:s");
+            if($state == "done"){
+                $bgClr = '#61dcf5';//suggested
+            }else if($d1>$d2){
+                $bgClr = '#ffd65d';//pending
+            }else{
+                $bgClr = '#dbdbdb';//old
+            }
+            
             //if($status == 'DENIED') {$bgClr = '#ff0000';}
             //else if($status == 'APPROVED') {$bgClr = '#00cc00';}
             $calendar_arr['backgroundColor'] = $bgClr; //#7FFF00 -> green, #ff0000 red, #f39c12 -> pending 
@@ -48,7 +65,7 @@ class CalendarController extends Controller
             $calendar_arr = [];
         }
 
-
+        // return $dates;
         return json_encode($calendars_arr);
     }
 
@@ -94,8 +111,8 @@ class CalendarController extends Controller
         
         $u_id = Auth::user()->id;
         $calendars = \App\Models\Calendar::where('user_id', $u_id)
-                                        ->where('rdate', '>=', DB::raw('curdate()'))
-                                        ->orderBy('rdate', 'desc')
+                                        ->where('rdate', '>=', DB::raw('CURRENT_TIMESTAMP()'))
+                                        ->orderBy('rdate', 'ASC')
                                         ->take(10)
                                         ->get();
         
@@ -108,12 +125,30 @@ class CalendarController extends Controller
         
         \App\Models\Calendar::where('id', $id)->delete();
         
-        $u_id = Auth::user()->id;
-        $calendars = \App\Models\Calendar::where('user_id', $u_id)
-                                        ->where('rdate', '>=', DB::raw('curdate()'))
-                                        ->get();
-        
         return redirect("/calendar/schedules");
     }
+
+    public function checkNearEvents()
+    {
+
+        // for query testing
+        //DB::enableQueryLog();
+
+        $u_id = Auth::user()->id;
+
+        $calendars = \App\Models\Calendar::where('user_id', $u_id)
+                                        ->whereBetween('rdate', [DB::raw('CURRENT_TIMESTAMP()'), DB::raw('ADDTIME(CURRENT_TIMESTAMP(), TIME("00:10:00"))')])
+                                        ->where('state', 'pending')
+                                        ->orderBy('rdate', 'asc')
+                                        ->take(1)
+                                        ->get();
+        //dd(DB::getQueryLog());
+        //dd($calendars);
+        $eventsCount = $calendars->count();
+      
+        
+        return $eventsCount;
+    }
+    
 }
 
