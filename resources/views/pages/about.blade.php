@@ -103,7 +103,7 @@
 
     <div class="col-4">
       <h4><b>Gharbi Youssef</b></h4>
-      <img src= "https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/255068710_3122125431333821_3181454262229554205_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=uDN7gwW6_Z4AX91BzpJ&_nc_ht=scontent-vie1-1.xx&oh=190236e055db5e6fa2cdef08da3d54f7&oe=61A10773" alt="Cinque Terre">
+      <img src= "{{ asset('members/YoussefGh.jpg') }}" alt="Cinque Terre">
       <p>Architect & Engineer</p>
     </div>
 
