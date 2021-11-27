@@ -91,8 +91,8 @@
     </div>
     <div class="col-4">
       <h4><b>Horvát Krisztofer Zoltán</b></h4>
-      <img src= "https://image.cnbcfm.com/api/v1/image/106689818-1599150563582-musk.jpg?v=1630603757" class="rounded" alt="Cinque Terre">
-      <p>Architect & Engineer</p>
+      <img src= "{{ asset('members/HorvatKrisztoferZoltan.jpeg') }}" class="rounded" alt="Cinque Terre">
+      <p>Engineer & Web API Specialist</p>
     </div>
 
     <div class="col-4">
@@ -110,7 +110,7 @@
     <div class="col-4">
       <h4><b>AL-Hitawi Mohammed</b></h4>
       <img src= "https://image.cnbcfm.com/api/v1/image/106689818-1599150563582-musk.jpg?v=1630603757" class="rounded" alt="Cinque Terre">
-      <p>Devloper& AI Specialist </p>
+      <p>Devloper & AI Specialist </p>
   </div>
     </div>
 
