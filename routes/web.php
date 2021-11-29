@@ -131,7 +131,7 @@ Route::GET('/calendar/checkEvents', 'App\Http\Controllers\CalendarController@che
 // ##replaced by the upper code##
 
 // History
-Route::get('/history', 'App\Http\Controllers\HistoryController@viewHistory');
+Route::get('/history', 'App\Http\Controllers\HistoryController@viewHistory')->name('history');
 
 
 Route::post('/chosentransport', [ChosenTransportController::class, 'store'])->name('chosentransport');

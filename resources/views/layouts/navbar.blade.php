@@ -1,3 +1,29 @@
+<?php
+
+    use Illuminate\Support\Facades\Route;
+
+    function add_nav_item($route, $text, $is_highlight) {
+        $nav_item = '<li class="nav-item';
+        if (Route::currentRouteName() == $route) {
+            $nav_item .= ' active';
+        }
+        $nav_item .= '"><a class="nav-link text-white rounded';
+        if ($is_highlight) {
+            $nav_item .= ' h5';
+        }
+        $nav_item .= '" href="' . route($route) . '">' . $text . '</a></li>';
+        echo $nav_item;
+    }
+
+?>
+<style>
+    .nav-item.active > a {
+        background-color: #146B42;
+    }
+    .nav-item > a:hover {
+        background-color: #146B42;
+    }
+</style>
 <div class="navbar navbar-expand-lg navbar-light bg-success">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
@@ -8,17 +34,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link text-white h5" href="/">Home</a>
-                <a class="nav-link text-white" href="{{route('about-us')}}">About Us</a>
-                <a class="nav-link text-white" href="{{route('contact')}}">Contact</a>
+                {{ add_nav_item('home', 'Home', true) }}
+                @auth
+                    {{ add_nav_item('dashboard', 'Dashboard', false) }}
+                    {{ add_nav_item('calendar_dashboard', 'Calendar', false) }}
+                    {{ add_nav_item('history', 'History', false) }}
+                @endauth
+                {{ add_nav_item('about-us', 'About Us', false) }}
+                {{ add_nav_item('contact', 'Contact', false) }}
             </div>
         </div>
         @if (Route::has('login'))
                 @auth
-                <a class="btn m-2 btn-secondary" href="{{route('calendar_dashboard')}}">Calendar</a>
-
-                <a href="{{ url('history') }}" class="btn btn-primary">History</a>
-                <a href="{{ route('dashboard')}}" class="btn btn-dark m-2">Dashboard</a>
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
                     <x-jet-dropdown align="right" width="48">
