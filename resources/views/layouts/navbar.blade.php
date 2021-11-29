@@ -15,10 +15,10 @@
         </div>
         @if (Route::has('login'))
                 @auth
-                <a class="btn m-2 btn-secondary" href="{{route('calendar_dashboard')}}">Calendar</a>
+                <a class="nav-link text-white h6" href="{{route('calendar_dashboard')}}">Calendar</a>
 
-                <a href="{{ url('history') }}" class="btn btn-primary">History</a>
-                <a href="{{ route('dashboard')}}" class="btn btn-dark m-2">Dashboard</a>
+                <a href="{{ url('history') }}" class="nav-link text-white h6">History</a>
+                <a href="{{ route('dashboard')}}" class="nav-link text-white h6">Dashboard</a>
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
                     <x-jet-dropdown align="right" width="48">
@@ -73,10 +73,10 @@
                 </div>
 {{--                <a href="{{ route('logout')}}" class="btn btn-danger">Logout</a>--}}
                 @else
-                    <a href="{{ route('login') }}" class="btn btn-primary p-2 m-2">Log in</a>
+                    <a href="{{ route('login') }}" class="nav-link text-white h6">Log in</a>
 
                     @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="btn btn-danger p-2 m-2">Register</a>
+                        <a href="{{ route('register') }}" class="nav-link text-white h6">Register</a>
                     @endif
                 @endauth
         @endif
