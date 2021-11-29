@@ -31,7 +31,7 @@
                 <textarea class="form-control white_bg" name="message" rows="4" required></textarea>
               </div>
               <div class="form-group d-grid gap-3 p-1  border text-secondary">
-                <button class="btn btn-primary" type="submit" value="submit">Send Message <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
+                <button class="btn" type="submit" value="submit">Send Message <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
                 {{-- <button type="button" value="submit" class="btn btn-primary">Send Message</button> --}}
               </div>
             </form>

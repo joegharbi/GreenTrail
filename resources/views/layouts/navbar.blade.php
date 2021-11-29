@@ -100,10 +100,10 @@
                 </div>
 {{--                <a href="{{ route('logout')}}" class="btn btn-danger">Logout</a>--}}
                 @else
-                    <a href="{{ route('login') }}" class="btn btn-primary p-2 m-2">Log in</a>
+                    <a href="{{ route('login') }}" class="nav-link text-white h6">Log in</a>
 
                     @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="btn btn-danger p-2 m-2">Register</a>
+                        <a href="{{ route('register') }}" class="nav-link text-white h6">Register</a>
                     @endif
                 @endauth
         @endif
