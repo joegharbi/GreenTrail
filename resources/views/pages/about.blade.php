@@ -84,7 +84,7 @@
 <div class="row">
     <div class="col-4">
       <h4><b>Bouafia</b></h4>
-      <img src= "members/1.jpg" class="rounded h-75 d-inline-block" alt="Bouafia">
+      <img src= "{{ asset('members/template.jpg') }}" class="rounded h-75 d-inline-block" alt="Bouafia">
       <p>Mentor</p>
     </div>
     <div class="col-4">
@@ -100,19 +100,19 @@
 
     <div class="col-4">
       <h4><b>Ismael Shadi</b></h4>
-      <img src= "https://image.cnbcfm.com/api/v1/image/106689818-1599150563582-musk.jpg?v=1630603757" alt="Cinque Terre" class="h-75 d-inline-block rounded">
+      <img src= "{{ asset('members/IsmaelShadi.jpg') }}" alt="Ismael Shadi" class="h-75 d-inline-block rounded">
       <p>Developer & Spokesman</p>
     </div>
 
     <div class="col-4">
       <h4><b>Gharbi Youssef</b></h4>
-      <img src= "{{ asset('members/YoussefGh.jpg') }}" alt="Cinque Terre" class="rounded h-75 d-inline-block">
+      <img src= "{{ asset('members/YoussefGh.jpg') }}" alt="Gharbi Youssef" class="rounded h-75 d-inline-block">
       <p>Full-stack developer</p>
     </div>
 
     <div class="col-4">
       <h4><b>AL-Hitawi Mohammed</b></h4>
-      <img src= "{{ asset('members/MohammedHit.jpg') }}" alt="Cinque Terre" class="h-75 d-inline-block  ">
+      <img src= "{{ asset('members/MohammedHit.jpg') }}" alt="AL-Hitawi Mohammed" class="h-75 d-inline-block rounded">
       <p>Devloper & AI Specialist </p>
   </div>
     </div>
