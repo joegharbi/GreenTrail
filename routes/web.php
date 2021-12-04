@@ -20,10 +20,6 @@ use App\Http\Controllers\ChosenTransportController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::middleware(['auth:sanctum', 'verified'])
     ->get('/dashboard', 'App\Http\Controllers\DashboardController@viewDashboard')
     ->name('dashboard');
@@ -55,17 +51,8 @@ Route::get('/about-us', function () {
     'page_name' => 'About us page',
     'page_description' => 'Description will be her '
     ]);
-    // return 'green trail';
 })->name("about-us");
 
-//Route::get('/logout',function () {
-//    //logout user
-//    auth()->logout();
-//    // redirect to homepage
-//    return redirect('/');
-//})->name("logout");
-
-//(URI , view , Array of data )
 Route::view('contact', 'pages/contact',[
     'page_name' => 'contact us page',
     'page_description' => 'Description will be her '
@@ -107,12 +94,6 @@ Route::group(['prefix' => 'api'], function() {
     });
 });
 
-// 14-11-2021
-// Route::get('/user/{id}', [UserController::class, 'show']);
-// Route::get('/history', [HistoryController::class, 'show']);
-// Route::get('/contact', [ContactController::class, 'show']);
-
-
 
 // MK
 Route::view('calendar', 'pages/calendar/calendar_dashboard',[
@@ -126,9 +107,6 @@ Route::get('/calendar/schedules', 'App\Http\Controllers\CalendarController@viewS
 Route::get('/calendar/schedules/delete/{id}', 'App\Http\Controllers\CalendarController@deleteSchedule');
 Route::GET('/calendar/checkEvents', 'App\Http\Controllers\CalendarController@checkNearEvents');
 
-// Dashboard
-// Route::post('/dashboard', 'App\Http\Controllers\DashboardController@viewDashboard');
-// ##replaced by the upper code##
 
 // History
 Route::get('/history', 'App\Http\Controllers\HistoryController@viewHistory')->name('history');

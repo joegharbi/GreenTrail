@@ -1,3 +1,8 @@
+@extends('layouts.master')
+
+@section('title', 'Profile Settings')
+
+@section('content')
 <x-app-layout>
     <x-slot name="header">
         @section('title','Profile')
@@ -44,3 +49,14 @@
         </div>
     </div>
 </x-app-layout>
+@stop
+{{-- parent directive --}}
+@section('sidebar')
+  This Is Sidebar From Profile  Page
+  {{-- 19/11/2021 --}}
+
+  @parent
+@endsection
+
+@section('f-content')
+@endsection
