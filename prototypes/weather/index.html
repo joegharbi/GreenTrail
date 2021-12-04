@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather API Test</title>
+</head>
+<body>
+    <h1>What's the weather right now?</h1>
+    <button onclick="getWeatherLocal()">Right here (GPS)</button><br><br>
+    <button onclick="getWeatherCity()">In the city of</button>
+    <input id='city'></input>
+    
+    <div id='img'></div>
+    <h2 id='result'></h2>
+    
+    <p>Powered by HERE Weather API</p>
+    <script type='text/JavaScript' src='../apiConnection.js' ></script>
+    <script type='text/JavaScript' src='index.js' ></script>
+</body>
+</html>

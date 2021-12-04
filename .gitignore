@@ -13,3 +13,5 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+prototypes/apiConnection.js
+resources/api/api_key.txt
