@@ -21,7 +21,10 @@
         </stylesheet>
         <style>
         body {
-            background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-2042508-jpeg.jpg");}</style>
+            background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-2042508-jpeg.jpg");
+            background-repeat: repeat-y;
+        }
+        </style>
       
       <!-- jquery -->
       <script src="{{asset('js/jQuery/jQuery-2.1.4.min.js')}}"></script>
