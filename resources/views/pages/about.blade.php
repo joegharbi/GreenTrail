@@ -64,7 +64,7 @@
       <p>A free-to-use web app, that helps to choose the best and most suitable way of transport based on live weather and traffic data. With this, you can reduce your CO<sup>2</sup> footprint significantly.</p>
       
       <h2 class="mt-5">The problem</h2>
-      <div class="fakeimg p-2 rounded">The increasing amount of air pollution causes high values of CO<sup>2</sup> in the atmosphere and contributes to global warming and climate changes by trapping heat.</div>
+      <div class="fakeimg p-2 rounded">The increasing amount of air pollution causes high values of CO<sup>2</sup> in the atmosphere and contributes to global warming and climate changes by trapping heat.</div>
       <h5 class="mt-1">Did you know?</h5>
       <p>Transportation is one of the largest pollution sources.</p>
       
@@ -84,12 +84,12 @@
 <div class="row">
     <div class="col-4">
       <h4><b>Bouafia</b></h4>
-      <img src= "members/1.jpg" class="rounded h-75 d-inline-block" alt="Bouafia">
+      <img src= "{{ asset('members/template.jpg') }}" class="rounded h-75 d-inline-block" alt="Bouafia">
       <p>Mentor</p>
     </div>
     <div class="col-4">
       <h4><b>Al Kadiry Mohamad</b></h4>
-      <img src= "https://image.cnbcfm.com/api/v1/image/106689818-1599150563582-musk.jpg?v=1630603757" class="rounded h-75 d-inline-block" alt="Al Kadiry Mohamad">
+      <img src= "{{ asset('members/mk.jpg') }}" class="rounded h-75 d-inline-block" alt="Al Kadiry Mohamad">
       <p>Idea owner, Architect & Engineer</p>
     </div>
     <div class="col-4">
@@ -100,19 +100,19 @@
 
     <div class="col-4">
       <h4><b>Ismael Shadi</b></h4>
-      <img src= "https://image.cnbcfm.com/api/v1/image/106689818-1599150563582-musk.jpg?v=1630603757" alt="Cinque Terre" class="h-75 d-inline-block rounded">
+      <img src= "{{ asset('members/IsmaelShadi.jpg') }}" alt="Ismael Shadi" class="h-75 d-inline-block rounded">
       <p>Developer & Spokesman</p>
     </div>
 
     <div class="col-4">
       <h4><b>Gharbi Youssef</b></h4>
-      <img src= "{{ asset('members/YoussefGh.jpg') }}" alt="Cinque Terre" class="rounded h-75 d-inline-block">
+      <img src= "{{ asset('members/YoussefGh.jpg') }}" alt="Gharbi Youssef" class="rounded h-75 d-inline-block">
       <p>Full-stack developer</p>
     </div>
 
     <div class="col-4">
       <h4><b>AL-Hitawi Mohammed</b></h4>
-      <img src= "{{ asset('members/MohammedHit.jpg') }}" alt="Cinque Terre" class="h-75 d-inline-block  ">
+      <img src= "{{ asset('members/MohammedHit.jpg') }}" alt="AL-Hitawi Mohammed" class="h-75 d-inline-block rounded">
       <p>Devloper & AI Specialist </p>
   </div>
     </div>
