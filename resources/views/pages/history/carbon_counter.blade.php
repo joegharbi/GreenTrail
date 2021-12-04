@@ -67,9 +67,18 @@
     margin: 0;
 }
 
+
 .counter_div{
     padding-left: 30%;
     padding-top: 20%;
+}
+
+@media (max-width:700px){
+    .counter_div{
+        padding-left: 5% !important;
+        padding-top: 7% !important;
+    }
+
 }
 .counter.green .counter-content{ background: linear-gradient(to right,#b7d952,#429a13);}
 .counter.green .counter-content:before{ background:#429a13;}
@@ -91,7 +100,7 @@
                     <div class="counter-icon">
                         <i class="fa fa-rocket"></i>
                     </div>
-                    <h3>Saved amount of CO2</h3>
+                    Reduced Emission (g)
                 </div>
             </div>
         </div>

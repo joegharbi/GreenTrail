@@ -60,7 +60,7 @@
                     <th>Schedule Date</th>
                     <th style="width: 100px">Status</th>
                     <th>Suggested Transportation</th>
-                    <th>Reduced Emission</th>
+                    <th>Reduced Emission (g)</th>
                     <th >Action</th>
 
                     </tr>

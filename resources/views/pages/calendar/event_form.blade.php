@@ -64,7 +64,7 @@
       <div class="form-group">
         <div class="row">
             <div class="col-xs-6">
-                <label>Reservation Date</label>
+                <label>Starting Date</label>
                 <span id="sprytf_rdate">
                 <input type="text" name="rdate" class="form-control" placeholder="YYYY-mm-dd">
                 <span class="textfieldRequiredMsg">Date is required.</span>
@@ -72,7 +72,7 @@
                 </span>
             </div>
             <div class="col-xs-6">
-                <label>Reservation Time</label>
+                <label>Starting Time</label>
                 <span id="sprytf_rtime">
                 <input type="text" name="rtime" class="form-control" placeholder="HH:mm">
                 <span class="textfieldRequiredMsg">Time is required.</span>

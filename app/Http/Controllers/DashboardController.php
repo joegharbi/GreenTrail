@@ -19,7 +19,8 @@ class DashboardController extends Controller
                                         ->take(10)
                                         ->get();
         
-        $histories = \App\Models\History::where('user_id', $u_id)
+        $histories = \App\Models\History::addSelect(DB::raw('*, `created_at` + INTERVAL 1 hour as `created_at`'))
+                                        ->where('user_id', $u_id)
                                         ->orderBy('created_at', 'desc')
                                         ->take(10)
                                         ->get();

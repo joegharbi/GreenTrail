@@ -61,7 +61,7 @@
                     <th>Source</th>
                     <th>Destination</th>
                     <th>Chosen Transportation</th>
-                    <th>Reduced Emission</th>
+                    <th>Reduced Emission (g)</th>
                     <th>Date</th>
                     </tr>
                 </thead>
