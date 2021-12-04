@@ -89,7 +89,7 @@
     </div>
     <div class="col-4">
       <h4><b>Al Kadiry Mohamad</b></h4>
-      <img src= "https://image.cnbcfm.com/api/v1/image/106689818-1599150563582-musk.jpg?v=1630603757" class="rounded h-75 d-inline-block" alt="Al Kadiry Mohamad">
+      <img src= "{{ asset('members/mk.jpg') }}" class="rounded h-75 d-inline-block" alt="Al Kadiry Mohamad">
       <p>Idea owner, Architect & Engineer</p>
     </div>
     <div class="col-4">
