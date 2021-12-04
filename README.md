@@ -4,7 +4,9 @@
 
 GreenTrail is a free-to-use web app, that helps to choose the best and most suitable way of transport based on live weather and traffic data. With this, you can reduce your CO<sup>2</sup> footprint significantly.
 
-## About us
+We started developing our product as a team project at Eötvös Loránd University.
+
+## About the idea
 
 ### The problem
 
@@ -29,6 +31,10 @@ We created an application, that can suggest transportation methods based on weat
 
 We are using an **agile development** methodology, to deliver a reliable and environmental-frienldy application in an iterative manner. Our method lies closest to the scrum agile methodology, except we don't estimate our tasks in story points and we don't have a scrum master. We hold "sprints" with the length of 1 week. In every monday we review the result of the previous week, and set goals for the next. We also tried some XP practices like the "Planning Game", and kept those aspects, that we found useful.
 
+### Project management
+
+We use Trello for project management. Check out our public Trello board [here](https://trello.com/b/qeb2G0I2/greentrail).
+
 ### Technologies used
 
 + Laravel (a PHP framework) - for back-end
@@ -36,7 +42,3 @@ We are using an **agile development** methodology, to deliver a reliable and env
 + Bootstrap 5 - for responsiveness
 + MySQL - for database
 + HERE APIs - for accessing live weather and traffic data
-
-## Features
-
-Work in progress...
