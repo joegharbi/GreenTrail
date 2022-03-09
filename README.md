@@ -25,7 +25,7 @@ We created an application, that can suggest transportation methods based on weat
 + **Horvát Krisztofer Zoltán** - Engineer & Web API Specialist
 + **Ismael Shadi** - Developer & Spokesman
 + **Gharbi Youssef** - Full-stack developer
-+ **AL-Hitawi Mohammed** - Devloper & AI Specialist
++ **AL-Hitawi Mohammed** - Developer & AI Specialist
 
 ### Methodology
 
